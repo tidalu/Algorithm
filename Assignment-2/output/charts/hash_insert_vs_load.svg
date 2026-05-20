@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text x="480" y="30" text-anchor="middle" font-size="22" font-family="Arial, sans-serif" font-weight="700" fill="#0f172a">Hash Table Insert Time vs Load Factor</text>
+  <g font-family="Arial, sans-serif">
+    <line x1="86" y1="54" x2="86" y2="466" stroke="#334155"/>
+    <line x1="86" y1="466" x2="928" y2="466" stroke="#334155"/>
+    
+        <line x1="86" y1="466" x2="86" y2="472" stroke="#334155"/>
+        <text x="86" y="490" text-anchor="middle" font-size="12" fill="#334155">0.10</text>
+        <line x1="212.3" y1="466" x2="212.3" y2="472" stroke="#334155"/>
+        <text x="212.3" y="490" text-anchor="middle" font-size="12" fill="#334155">0.25</text>
+        <line x1="422.8" y1="466" x2="422.8" y2="472" stroke="#334155"/>
+        <text x="422.8" y="490" text-anchor="middle" font-size="12" fill="#334155">0.50</text>
+        <line x1="591.2" y1="466" x2="591.2" y2="472" stroke="#334155"/>
+        <text x="591.2" y="490" text-anchor="middle" font-size="12" fill="#334155">0.70</text>
+        <line x1="675.4000000000001" y1="466" x2="675.4000000000001" y2="472" stroke="#334155"/>
+        <text x="675.4000000000001" y="490" text-anchor="middle" font-size="12" fill="#334155">0.80</text>
+        <line x1="759.6" y1="466" x2="759.6" y2="472" stroke="#334155"/>
+        <text x="759.6" y="490" text-anchor="middle" font-size="12" fill="#334155">0.90</text>
+    
+        <line x1="80" y1="466" x2="86" y2="466" stroke="#334155"/>
+        <line x1="86" y1="466" x2="928" y2="466" stroke="#e2e8f0"/>
+        <text x="74" y="470" text-anchor="end" font-size="12" fill="#334155">0</text>
+        <line x1="80" y1="383.6" x2="86" y2="383.6" stroke="#334155"/>
+        <line x1="86" y1="383.6" x2="928" y2="383.6" stroke="#e2e8f0"/>
+        <text x="74" y="387.6" text-anchor="end" font-size="12" fill="#334155">1.98</text>
+        <line x1="80" y1="301.2" x2="86" y2="301.2" stroke="#334155"/>
+        <line x1="86" y1="301.2" x2="928" y2="301.2" stroke="#e2e8f0"/>
+        <text x="74" y="305.2" text-anchor="end" font-size="12" fill="#334155">3.96</text>
+        <line x1="80" y1="218.79999999999995" x2="86" y2="218.79999999999995" stroke="#334155"/>
+        <line x1="86" y1="218.79999999999995" x2="928" y2="218.79999999999995" stroke="#e2e8f0"/>
+        <text x="74" y="222.79999999999995" text-anchor="end" font-size="12" fill="#334155">5.93</text>
+        <line x1="80" y1="136.39999999999998" x2="86" y2="136.39999999999998" stroke="#334155"/>
+        <line x1="86" y1="136.39999999999998" x2="928" y2="136.39999999999998" stroke="#e2e8f0"/>
+        <text x="74" y="140.39999999999998" text-anchor="end" font-size="12" fill="#334155">7.91</text>
+        <line x1="80" y1="54" x2="86" y2="54" stroke="#334155"/>
+        <line x1="86" y1="54" x2="928" y2="54" stroke="#e2e8f0"/>
+        <text x="74" y="58" text-anchor="end" font-size="12" fill="#334155">9.89</text>
+    <polyline fill="none" stroke="#2563eb" stroke-width="2.4" points="86.00,98.14 212.30,382.87 422.80,416.71 591.20,384.39 675.40,371.11 759.60,384.95"/><circle cx="86.00" cy="98.14" r="4" fill="#2563eb"/><circle cx="212.30" cy="382.87" r="4" fill="#2563eb"/><circle cx="422.80" cy="416.71" r="4" fill="#2563eb"/><circle cx="591.20" cy="384.39" r="4" fill="#2563eb"/><circle cx="675.40" cy="371.11" r="4" fill="#2563eb"/><circle cx="759.60" cy="384.95" r="4" fill="#2563eb"/><polyline fill="none" stroke="#dc2626" stroke-width="2.4" points="86.00,278.17 212.30,437.75 422.80,404.63 591.20,434.85 675.40,398.72 759.60,376.25"/><circle cx="86.00" cy="278.17" r="4" fill="#dc2626"/><circle cx="212.30" cy="437.75" r="4" fill="#dc2626"/><circle cx="422.80" cy="404.63" r="4" fill="#dc2626"/><circle cx="591.20" cy="434.85" r="4" fill="#dc2626"/><circle cx="675.40" cy="398.72" r="4" fill="#dc2626"/><circle cx="759.60" cy="376.25" r="4" fill="#dc2626"/><polyline fill="none" stroke="#059669" stroke-width="2.4" points="86.00,345.92 212.30,412.50 422.80,412.37 591.20,395.35 675.40,390.52 759.60,380.60"/><circle cx="86.00" cy="345.92" r="4" fill="#059669"/><circle cx="212.30" cy="412.50" r="4" fill="#059669"/><circle cx="422.80" cy="412.37" r="4" fill="#059669"/><circle cx="591.20" cy="395.35" r="4" fill="#059669"/><circle cx="675.40" cy="390.52" r="4" fill="#059669"/><circle cx="759.60" cy="380.60" r="4" fill="#059669"/>
+    <text x="507" y="542" text-anchor="middle" font-size="14" fill="#0f172a">Load factor</text>
+    <text transform="translate(24 260) rotate(-90)" text-anchor="middle" font-size="14" fill="#0f172a">Median insert time (microseconds/op)</text>
+    
+        <rect x="86" y="502" width="12" height="12" fill="#2563eb"/>
+        <text x="104" y="512" font-size="13" fill="#0f172a">Separate Chaining</text>
+        <rect x="356" y="502" width="12" height="12" fill="#dc2626"/>
+        <text x="374" y="512" font-size="13" fill="#0f172a">Linear Probing</text>
+        <rect x="626" y="502" width="12" height="12" fill="#059669"/>
+        <text x="644" y="512" font-size="13" fill="#0f172a">Double Hashing</text>
+  </g>
+</svg>

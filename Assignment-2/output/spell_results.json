@@ -1,0 +1,491 @@
+{
+  "generatedAt": "2026-05-19T22:38:24.804Z",
+  "dictionaryLimit": 30000,
+  "dictionarySize": 30000,
+  "textSizes": [
+    5000,
+    10000,
+    20000,
+    50000,
+    100000
+  ],
+  "lookupRuns": 3,
+  "buildResults": [
+    {
+      "dictionary": "Linear List",
+      "buildMedianMs": 0.9560999999999922,
+      "buildRunsMs": [
+        0.9560999999999922
+      ],
+      "memoryBytes": 753754,
+      "dictionarySize": 30000
+    },
+    {
+      "dictionary": "Red-Black Tree",
+      "buildMedianMs": 95.75039999999899,
+      "buildRunsMs": [
+        95.75039999999899
+      ],
+      "memoryBytes": 2433754,
+      "dictionarySize": 30000
+    },
+    {
+      "dictionary": "Ordinary Trie",
+      "buildMedianMs": 121.32710000000043,
+      "buildRunsMs": [
+        121.32710000000043
+      ],
+      "memoryBytes": 4748376,
+      "dictionarySize": 30000
+    },
+    {
+      "dictionary": "Hash Map",
+      "buildMedianMs": 20.80030000000079,
+      "buildRunsMs": [
+        20.80030000000079
+      ],
+      "memoryBytes": 1953754,
+      "dictionarySize": 30000
+    },
+    {
+      "dictionary": "Balanced Ternary Trie",
+      "buildMedianMs": 122.8744999999999,
+      "buildRunsMs": [
+        122.8744999999999
+      ],
+      "memoryBytes": 3693144,
+      "dictionarySize": 30000
+    },
+    {
+      "dictionary": "Double-Array Trie",
+      "buildMedianMs": 659.0739999999987,
+      "buildRunsMs": [
+        659.0739999999987
+      ],
+      "memoryBytes": 1433916,
+      "dictionarySize": 30000
+    }
+  ],
+  "lookupResults": [
+    {
+      "dictionary": "Linear List",
+      "requestedChars": 5000,
+      "actualChars": 5009,
+      "tokenCount": 526,
+      "lookupMedianMs": 34.456300000000056,
+      "lookupRunsMs": [
+        67.4685,
+        34.017600000000016,
+        34.456300000000056
+      ],
+      "correct": 478,
+      "misspelled": 48
+    },
+    {
+      "dictionary": "Linear List",
+      "requestedChars": 10000,
+      "actualChars": 10003,
+      "tokenCount": 1038,
+      "lookupMedianMs": 101.96570000000008,
+      "lookupRunsMs": [
+        101.96570000000008,
+        109.96019999999999,
+        86.06319999999994
+      ],
+      "correct": 943,
+      "misspelled": 95
+    },
+    {
+      "dictionary": "Linear List",
+      "requestedChars": 20000,
+      "actualChars": 19999,
+      "tokenCount": 2084,
+      "lookupMedianMs": 157.4152999999999,
+      "lookupRunsMs": [
+        152.5528999999999,
+        157.4152999999999,
+        168.9608999999998
+      ],
+      "correct": 1894,
+      "misspelled": 190
+    },
+    {
+      "dictionary": "Linear List",
+      "requestedChars": 50000,
+      "actualChars": 49999,
+      "tokenCount": 5166,
+      "lookupMedianMs": 561.6225,
+      "lookupRunsMs": [
+        561.6225,
+        554.0547000000001,
+        1192.5769999999998
+      ],
+      "correct": 4696,
+      "misspelled": 470
+    },
+    {
+      "dictionary": "Linear List",
+      "requestedChars": 100000,
+      "actualChars": 100008,
+      "tokenCount": 10328,
+      "lookupMedianMs": 3356.958699999999,
+      "lookupRunsMs": [
+        3553.5692999999997,
+        3356.958699999999,
+        3246.7626999999993
+      ],
+      "correct": 9389,
+      "misspelled": 939
+    },
+    {
+      "dictionary": "Red-Black Tree",
+      "requestedChars": 5000,
+      "actualChars": 5009,
+      "tokenCount": 526,
+      "lookupMedianMs": 1.7767999999996391,
+      "lookupRunsMs": [
+        3.552799999999479,
+        1.0925999999999476,
+        1.7767999999996391
+      ],
+      "correct": 478,
+      "misspelled": 48
+    },
+    {
+      "dictionary": "Red-Black Tree",
+      "requestedChars": 10000,
+      "actualChars": 10003,
+      "tokenCount": 1038,
+      "lookupMedianMs": 1.5630000000001019,
+      "lookupRunsMs": [
+        1.5630000000001019,
+        1.6867999999994936,
+        1.1452999999983149
+      ],
+      "correct": 943,
+      "misspelled": 95
+    },
+    {
+      "dictionary": "Red-Black Tree",
+      "requestedChars": 20000,
+      "actualChars": 19999,
+      "tokenCount": 2084,
+      "lookupMedianMs": 2.7347000000008848,
+      "lookupRunsMs": [
+        2.4333999999998923,
+        2.7347000000008848,
+        2.966200000000754
+      ],
+      "correct": 1894,
+      "misspelled": 190
+    },
+    {
+      "dictionary": "Red-Black Tree",
+      "requestedChars": 50000,
+      "actualChars": 49999,
+      "tokenCount": 5166,
+      "lookupMedianMs": 8.271099999999933,
+      "lookupRunsMs": [
+        8.271099999999933,
+        6.889199999999619,
+        8.285400000000664
+      ],
+      "correct": 4696,
+      "misspelled": 470
+    },
+    {
+      "dictionary": "Red-Black Tree",
+      "requestedChars": 100000,
+      "actualChars": 100008,
+      "tokenCount": 10328,
+      "lookupMedianMs": 19.109400000001187,
+      "lookupRunsMs": [
+        12.899199999999837,
+        20.89969999999994,
+        19.109400000001187
+      ],
+      "correct": 9389,
+      "misspelled": 939
+    },
+    {
+      "dictionary": "Ordinary Trie",
+      "requestedChars": 5000,
+      "actualChars": 5009,
+      "tokenCount": 526,
+      "lookupMedianMs": 3.731499999999869,
+      "lookupRunsMs": [
+        4.141200000000026,
+        3.731499999999869,
+        2.8606999999992695
+      ],
+      "correct": 478,
+      "misspelled": 48
+    },
+    {
+      "dictionary": "Ordinary Trie",
+      "requestedChars": 10000,
+      "actualChars": 10003,
+      "tokenCount": 1038,
+      "lookupMedianMs": 3.1071000000010827,
+      "lookupRunsMs": [
+        8.653800000000047,
+        3.1071000000010827,
+        2.6796999999987747
+      ],
+      "correct": 943,
+      "misspelled": 95
+    },
+    {
+      "dictionary": "Ordinary Trie",
+      "requestedChars": 20000,
+      "actualChars": 19999,
+      "tokenCount": 2084,
+      "lookupMedianMs": 4.125599999999395,
+      "lookupRunsMs": [
+        5.761199999999008,
+        3.099500000000262,
+        4.125599999999395
+      ],
+      "correct": 1894,
+      "misspelled": 190
+    },
+    {
+      "dictionary": "Ordinary Trie",
+      "requestedChars": 50000,
+      "actualChars": 49999,
+      "tokenCount": 5166,
+      "lookupMedianMs": 14.706000000000131,
+      "lookupRunsMs": [
+        12.838200000000143,
+        15.106400000000576,
+        14.706000000000131
+      ],
+      "correct": 4696,
+      "misspelled": 470
+    },
+    {
+      "dictionary": "Ordinary Trie",
+      "requestedChars": 100000,
+      "actualChars": 100008,
+      "tokenCount": 10328,
+      "lookupMedianMs": 27.133299999999508,
+      "lookupRunsMs": [
+        27.133299999999508,
+        28.374499999999898,
+        25.598700000000463
+      ],
+      "correct": 9389,
+      "misspelled": 939
+    },
+    {
+      "dictionary": "Hash Map",
+      "requestedChars": 5000,
+      "actualChars": 5009,
+      "tokenCount": 526,
+      "lookupMedianMs": 0.24160000000119908,
+      "lookupRunsMs": [
+        0.7213000000010652,
+        0.21010000000023865,
+        0.24160000000119908
+      ],
+      "correct": 478,
+      "misspelled": 48
+    },
+    {
+      "dictionary": "Hash Map",
+      "requestedChars": 10000,
+      "actualChars": 10003,
+      "tokenCount": 1038,
+      "lookupMedianMs": 1.0750000000007276,
+      "lookupRunsMs": [
+        1.7506000000012136,
+        1.0750000000007276,
+        0.6087999999999738
+      ],
+      "correct": 943,
+      "misspelled": 95
+    },
+    {
+      "dictionary": "Hash Map",
+      "requestedChars": 20000,
+      "actualChars": 19999,
+      "tokenCount": 2084,
+      "lookupMedianMs": 2.3119000000006054,
+      "lookupRunsMs": [
+        1.6231000000007043,
+        2.3654999999998836,
+        2.3119000000006054
+      ],
+      "correct": 1894,
+      "misspelled": 190
+    },
+    {
+      "dictionary": "Hash Map",
+      "requestedChars": 50000,
+      "actualChars": 49999,
+      "tokenCount": 5166,
+      "lookupMedianMs": 4.945499999999811,
+      "lookupRunsMs": [
+        5.426499999999578,
+        4.945499999999811,
+        3.87329999999929
+      ],
+      "correct": 4696,
+      "misspelled": 470
+    },
+    {
+      "dictionary": "Hash Map",
+      "requestedChars": 100000,
+      "actualChars": 100008,
+      "tokenCount": 10328,
+      "lookupMedianMs": 4.738199999999779,
+      "lookupRunsMs": [
+        12.363600000000588,
+        4.738199999999779,
+        3.0491000000001804
+      ],
+      "correct": 9389,
+      "misspelled": 939
+    },
+    {
+      "dictionary": "Balanced Ternary Trie",
+      "requestedChars": 5000,
+      "actualChars": 5009,
+      "tokenCount": 526,
+      "lookupMedianMs": 3.0859999999993306,
+      "lookupRunsMs": [
+        4.017099999999118,
+        2.2690999999995256,
+        3.0859999999993306
+      ],
+      "correct": 478,
+      "misspelled": 48
+    },
+    {
+      "dictionary": "Balanced Ternary Trie",
+      "requestedChars": 10000,
+      "actualChars": 10003,
+      "tokenCount": 1038,
+      "lookupMedianMs": 1.5315999999984342,
+      "lookupRunsMs": [
+        3.459600000000137,
+        1.4868999999998778,
+        1.5315999999984342
+      ],
+      "correct": 943,
+      "misspelled": 95
+    },
+    {
+      "dictionary": "Balanced Ternary Trie",
+      "requestedChars": 20000,
+      "actualChars": 19999,
+      "tokenCount": 2084,
+      "lookupMedianMs": 4.401099999999133,
+      "lookupRunsMs": [
+        3.7153999999991356,
+        4.401099999999133,
+        5.861300000000483
+      ],
+      "correct": 1894,
+      "misspelled": 190
+    },
+    {
+      "dictionary": "Balanced Ternary Trie",
+      "requestedChars": 50000,
+      "actualChars": 49999,
+      "tokenCount": 5166,
+      "lookupMedianMs": 7.227500000000873,
+      "lookupRunsMs": [
+        10.649999999999636,
+        7.227500000000873,
+        7.150200000000041
+      ],
+      "correct": 4696,
+      "misspelled": 470
+    },
+    {
+      "dictionary": "Balanced Ternary Trie",
+      "requestedChars": 100000,
+      "actualChars": 100008,
+      "tokenCount": 10328,
+      "lookupMedianMs": 21.688599999999497,
+      "lookupRunsMs": [
+        22.88630000000012,
+        21.688599999999497,
+        17.69930000000022
+      ],
+      "correct": 9389,
+      "misspelled": 939
+    },
+    {
+      "dictionary": "Double-Array Trie",
+      "requestedChars": 5000,
+      "actualChars": 5009,
+      "tokenCount": 526,
+      "lookupMedianMs": 2.867499999998472,
+      "lookupRunsMs": [
+        3.4350000000013097,
+        2.867499999998472,
+        1.3497999999999593
+      ],
+      "correct": 478,
+      "misspelled": 48
+    },
+    {
+      "dictionary": "Double-Array Trie",
+      "requestedChars": 10000,
+      "actualChars": 10003,
+      "tokenCount": 1038,
+      "lookupMedianMs": 2.9279999999998836,
+      "lookupRunsMs": [
+        2.9279999999998836,
+        3.09690000000046,
+        0.8523000000004686
+      ],
+      "correct": 943,
+      "misspelled": 95
+    },
+    {
+      "dictionary": "Double-Array Trie",
+      "requestedChars": 20000,
+      "actualChars": 19999,
+      "tokenCount": 2084,
+      "lookupMedianMs": 1.6750000000010914,
+      "lookupRunsMs": [
+        1.6750000000010914,
+        1.346799999999348,
+        1.7397000000000844
+      ],
+      "correct": 1894,
+      "misspelled": 190
+    },
+    {
+      "dictionary": "Double-Array Trie",
+      "requestedChars": 50000,
+      "actualChars": 49999,
+      "tokenCount": 5166,
+      "lookupMedianMs": 4.757100000000719,
+      "lookupRunsMs": [
+        4.034600000000864,
+        4.7674000000006345,
+        4.757100000000719
+      ],
+      "correct": 4696,
+      "misspelled": 470
+    },
+    {
+      "dictionary": "Double-Array Trie",
+      "requestedChars": 100000,
+      "actualChars": 100008,
+      "tokenCount": 10328,
+      "lookupMedianMs": 10.663399999999456,
+      "lookupRunsMs": [
+        8.988499999999476,
+        10.663399999999456,
+        10.818099999998594
+      ],
+      "correct": 9389,
+      "misspelled": 939
+    }
+  ]
+}
