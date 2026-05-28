@@ -9,7 +9,6 @@ Node.js implementations for two university algorithm assignments. Each assignmen
 | [`Assignment-1`](./Assignment-1) | Pattern matching algorithms, wildcard matching, and 2D Rabin-Karp | [`Assignment-1/output/report.pdf`](./Assignment-1/output/report.pdf) |
 | [`Assignment-2`](./Assignment-2) | Dictionaries, graph tasks, and hash tables | [`Assignment-2/output/report.pdf`](./Assignment-2/output/report.pdf) |
 
-The `_Ulugbek_Norbutaev` folders are submission-named copies of the same projects.
 
 ## Quick Start
 
