@@ -126,3 +126,41 @@ Items are mapped to integers before hashing. Row hashes are computed first, then
 
 ---
 
+
+
+## REFERENCES
+
+The following sources were consulted during the design, implementation,  
+and analysis of this project.
+
+---
+
+**[CLRS]**  
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., and Stein, C.  
+*Introduction to Algorithms*, 4th ed. MIT Press, 2022.  
+(KMP, Rabin-Karp, FSM string matcher — Chapter 32)
+
+---
+
+**[GUS]**  
+Gusfield, D.  
+*Algorithms on Strings, Trees, and Sequences*.  
+Cambridge University Press, 1997.  
+(Z-Algorithm — Chapter 1)
+
+---
+
+**[CL]**  
+Crochemore, M. and Lecroq, T.  
+*Handbook of Exact String Matching Algorithms*.  
+King's College London Publications, 2004.  
+(Brute Force, Sunday — Chapters 1 and 8)
+
+---
+
+**[AI]**  
+AI & Web Tools.  
+Development was assisted by AI tools (Claude by Anthropic,  
+ChatGPT by OpenAI, GitHub Copilot by GitHub/Microsoft) and  
+web resources (Google Search, Google Scholar).  
+All implementations and analysis are the author's own.
