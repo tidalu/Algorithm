@@ -1,0 +1,110 @@
+{
+  "generatedAt": "2026-05-28T13:00:32.248Z",
+  "races": [
+    {
+      "id": "sunday-vs-gusfield",
+      "title": "Sunday >= 2x faster than Gusfield Z",
+      "textPrefix50": "cccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "textPrefix100": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "pattern": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+      "explanation": "The text character after each Sunday window is never in the pattern, so Sunday jumps by m + 1. Gusfield still builds the full Z-array over pattern + separator + text.",
+      "measurements": [
+        {
+          "algorithm": "Sunday",
+          "medianMs": 0.008299999999962893,
+          "runsMs": [
+            0.01040000000011787,
+            0.008499999999912689,
+            0.008299999999962893,
+            0.008299999999962893,
+            0.008100000000013097
+          ],
+          "matchCount": 0
+        },
+        {
+          "algorithm": "Gusfield Z",
+          "medianMs": 1.5664999999999054,
+          "runsMs": [
+            2.756000000000313,
+            2.553099999999631,
+            1.2312000000001717,
+            1.550000000000182,
+            1.5664999999999054
+          ],
+          "matchCount": 0
+        }
+      ],
+      "ratio": 188.73493975986855
+    },
+    {
+      "id": "kmp-vs-rabin-karp",
+      "title": "KMP >= 2x faster than Rabin-Karp",
+      "textPrefix50": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "textPrefix100": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pattern": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "explanation": "Every window is a hash hit for Rabin-Karp, so it must verify many long matches. KMP keeps a prefix-state machine and moves through the text linearly.",
+      "measurements": [
+        {
+          "algorithm": "KMP",
+          "medianMs": 1.7161999999998443,
+          "runsMs": [
+            1.7161999999998443,
+            1.6848999999997432,
+            1.6938000000000102,
+            1.744499999999789,
+            2.360500000000229
+          ],
+          "matchCount": 102273
+        },
+        {
+          "algorithm": "Rabin-Karp",
+          "medianMs": 11.800000000000182,
+          "runsMs": [
+            14.330899999999929,
+            12.02350000000024,
+            11.800000000000182,
+            11.448100000000068,
+            11.692399999999907
+          ],
+          "matchCount": 102273
+        }
+      ],
+      "ratio": 6.875655518005624
+    },
+    {
+      "id": "rabin-karp-vs-sunday",
+      "title": "Rabin-Karp >= 2x faster than Sunday",
+      "textPrefix50": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "textPrefix100": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "pattern": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
+      "explanation": "Sunday compares almost the whole pattern before the final mismatch and then shifts only two positions. Rabin-Karp rolls one hash per position and almost never verifies.",
+      "measurements": [
+        {
+          "algorithm": "Rabin-Karp",
+          "medianMs": 6.042199999999866,
+          "runsMs": [
+            5.962799999999788,
+            5.957000000000335,
+            6.337999999999738,
+            6.070499999999811,
+            6.042199999999866
+          ],
+          "matchCount": 0
+        },
+        {
+          "algorithm": "Sunday",
+          "medianMs": 56.96189999999979,
+          "runsMs": [
+            77.19709999999986,
+            56.96189999999979,
+            54.671100000000024,
+            62.74860000000035,
+            55.603599999999915
+          ],
+          "matchCount": 0
+        }
+      ],
+      "ratio": 9.427344344775255
+    }
+  ]
+}

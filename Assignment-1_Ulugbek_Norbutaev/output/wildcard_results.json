@@ -1,0 +1,134 @@
+{
+  "generatedAt": "2026-05-28T13:00:32.267Z",
+  "tests": [
+    {
+      "name": "basic literal",
+      "text": "hello world",
+      "pattern": "world",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "question mark",
+      "text": "hello",
+      "pattern": "h?llo",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "star consumes middle",
+      "text": "hello",
+      "pattern": "h*o",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "escaped question",
+      "text": "he?lo",
+      "pattern": "he\\?lo",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "escaped star",
+      "text": "he*lo",
+      "pattern": "he\\*lo",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "escaped backslash",
+      "text": "he\\lo",
+      "pattern": "he\\\\lo",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "no match",
+      "text": "hello",
+      "pattern": "world",
+      "expected": false,
+      "bruteForceWildcard": false,
+      "sundayWildcard": false,
+      "passed": true
+    },
+    {
+      "name": "match at start",
+      "text": "start middle end",
+      "pattern": "start*",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "match at end",
+      "text": "start middle end",
+      "pattern": "*end",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "star matches empty",
+      "text": "beautiful",
+      "pattern": "beau*tiful",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "match in middle",
+      "text": "say hello now",
+      "pattern": "hello",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "combined wildcards",
+      "text": "hello beautiful world",
+      "pattern": "h?llo*world",
+      "expected": true,
+      "bruteForceWildcard": true,
+      "sundayWildcard": true,
+      "passed": true
+    },
+    {
+      "name": "combined no match",
+      "text": "abc",
+      "pattern": "a*d",
+      "expected": false,
+      "bruteForceWildcard": false,
+      "sundayWildcard": false,
+      "passed": true
+    }
+  ],
+  "largeTiming": {
+    "textLength": 110010,
+    "pattern": "n*Z?nd",
+    "bruteForceWildcard": {
+      "result": true,
+      "ms": 1.1363999999998668
+    },
+    "sundayWildcard": {
+      "result": true,
+      "ms": 2.2872000000002117
+    }
+  }
+}

@@ -1,0 +1,1107 @@
+{
+  "generatedAt": "2026-05-28T13:00:31.721Z",
+  "sizes": [
+    10000,
+    50000,
+    100000,
+    200000,
+    500000,
+    1000000
+  ],
+  "patterns": {
+    "small": {
+      "type": "small",
+      "label": "Small pattern",
+      "start": 391852,
+      "value": "the White Whale"
+    },
+    "large": {
+      "type": "large",
+      "label": "Large pattern",
+      "start": 20000,
+      "value": "ght in, and we saw in the Berlin Gazette that\n  whales had been introduced on the stage there.” —_Eckermann’s\n  Conversations with Goethe_.\n\n  “My God! Mr. Chace, what is the matter?” I answered, “we have been\n  stove by a whale.” —“_Narrative of the Shipwreck of the Whale Ship\n  Essex of Nantucket,"
+    }
+  },
+  "results": [
+    {
+      "algorithm": "Brute Force",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 0.6628000000000043,
+      "runsMs": [
+        0.6455999999999875,
+        0.6628000000000043,
+        0.7078999999999951
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.07150000000000034,
+      "runsMs": [
+        0.07150000000000034,
+        0.07250000000000512,
+        0.07079999999999131
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 0.46290000000000475,
+      "runsMs": [
+        0.46009999999999707,
+        0.4697000000000031,
+        0.46290000000000475
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.4001999999999981,
+      "runsMs": [
+        1.8388999999999953,
+        0.4001999999999981,
+        0.3824999999999932
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 0.7788000000000039,
+      "runsMs": [
+        0.7923000000000116,
+        0.771899999999988,
+        0.7788000000000039
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.5546000000000078,
+      "runsMs": [
+        0.5559999999999974,
+        0.553600000000003,
+        0.5546000000000078
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 1.625,
+      "runsMs": [
+        1.625,
+        1.6324999999999932,
+        1.6198000000000263
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 1.112400000000008,
+      "runsMs": [
+        1.1242000000000019,
+        1.1071000000000026,
+        1.112400000000008
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 4.307099999999991,
+      "runsMs": [
+        4.35560000000001,
+        4.307099999999991,
+        4.092899999999986
+      ],
+      "matchCount": 14
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 3.640100000000018,
+      "runsMs": [
+        3.640100000000018,
+        5.915699999999987,
+        3.0594000000000108
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 8.17749999999998,
+      "runsMs": [
+        8.063600000000008,
+        8.252099999999984,
+        8.17749999999998
+      ],
+      "matchCount": 31
+    },
+    {
+      "algorithm": "Brute Force",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 11.8279,
+      "runsMs": [
+        12.0471,
+        11.8279,
+        7.304699999999997
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 0.11889999999999645,
+      "runsMs": [
+        0.13679999999999382,
+        0.11760000000001014,
+        0.11889999999999645
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.04449999999999932,
+      "runsMs": [
+        0.04449999999999932,
+        0.04820000000000846,
+        0.04410000000001446
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 0.6554000000000144,
+      "runsMs": [
+        1.6812999999999931,
+        0.6554000000000144,
+        0.6074000000000126
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.16720000000000823,
+      "runsMs": [
+        0.18279999999998608,
+        0.16720000000000823,
+        0.16210000000000946
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 0.37359999999998195,
+      "runsMs": [
+        0.9120000000000061,
+        0.37359999999998195,
+        0.31469999999998777
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.5855999999999995,
+      "runsMs": [
+        0.5855999999999995,
+        0.6426999999999907,
+        0.3843999999999994
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 0.3640000000000043,
+      "runsMs": [
+        2.2772999999999968,
+        0.3640000000000043,
+        0.31409999999999627
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.6023999999999887,
+      "runsMs": [
+        0.6918000000000291,
+        0.6023999999999887,
+        0.5851000000000113
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 1.220899999999972,
+      "runsMs": [
+        1.220899999999972,
+        1.2662000000000262,
+        1.0293000000000347
+      ],
+      "matchCount": 14
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.38990000000001146,
+      "runsMs": [
+        0.38990000000001146,
+        0.32089999999999463,
+        0.413599999999974
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 2.5056000000000154,
+      "runsMs": [
+        2.5056000000000154,
+        2.300399999999968,
+        3.029299999999978
+      ],
+      "matchCount": 31
+    },
+    {
+      "algorithm": "Sunday",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.8922000000000025,
+      "runsMs": [
+        1.4189999999999827,
+        0.8432999999999993,
+        0.8922000000000025
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "KMP",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 0.4615999999999758,
+      "runsMs": [
+        0.4615999999999758,
+        0.6813999999999965,
+        0.46100000000001273
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "KMP",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.5215999999999781,
+      "runsMs": [
+        0.5461999999999989,
+        0.44020000000000437,
+        0.5215999999999781
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "KMP",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 0.9209000000000174,
+      "runsMs": [
+        3.092800000000011,
+        0.9209000000000174,
+        0.5729000000000042
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "KMP",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 2.3888999999999783,
+      "runsMs": [
+        3.238400000000013,
+        1.4395000000000095,
+        2.3888999999999783
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "KMP",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 1.065499999999986,
+      "runsMs": [
+        1.0295999999999594,
+        1.219600000000014,
+        1.065499999999986
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "KMP",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.7688999999999737,
+      "runsMs": [
+        0.8477000000000317,
+        0.6884000000000015,
+        0.7688999999999737
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "KMP",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 2.0331999999999653,
+      "runsMs": [
+        2.0448000000000093,
+        2.0331999999999653,
+        1.9218999999999937
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "KMP",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 1.4599999999999795,
+      "runsMs": [
+        1.7320000000000277,
+        1.4599999999999795,
+        1.4227999999999952
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "KMP",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 6.121600000000001,
+      "runsMs": [
+        8.083100000000002,
+        6.121600000000001,
+        4.650699999999972
+      ],
+      "matchCount": 14
+    },
+    {
+      "algorithm": "KMP",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 3.2384999999999877,
+      "runsMs": [
+        3.2384999999999877,
+        3.200300000000027,
+        3.2654999999999745
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "KMP",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 9.670600000000036,
+      "runsMs": [
+        9.670600000000036,
+        9.188600000000008,
+        9.99350000000004
+      ],
+      "matchCount": 31
+    },
+    {
+      "algorithm": "KMP",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 9.11239999999998,
+      "runsMs": [
+        9.11239999999998,
+        8.79419999999999,
+        10.4341
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "FSM",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 1.4050000000000296,
+      "runsMs": [
+        1.2975000000000136,
+        1.4050000000000296,
+        2.8752000000000066
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "FSM",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 3.872699999999952,
+      "runsMs": [
+        3.385600000000011,
+        3.995900000000006,
+        3.872699999999952
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "FSM",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 3.5908000000000015,
+      "runsMs": [
+        3.5908000000000015,
+        4.411900000000003,
+        3.564199999999971
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "FSM",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 5.386599999999987,
+      "runsMs": [
+        6.393799999999999,
+        5.386599999999987,
+        5.105899999999963
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "FSM",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 6.193000000000097,
+      "runsMs": [
+        6.1831000000000245,
+        6.4266999999999825,
+        6.193000000000097
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "FSM",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 8.262900000000059,
+      "runsMs": [
+        8.262900000000059,
+        7.81759999999997,
+        10.07890000000009
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "FSM",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 13.44380000000001,
+      "runsMs": [
+        16.960699999999974,
+        13.44380000000001,
+        12.898199999999974
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "FSM",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 17.18909999999994,
+      "runsMs": [
+        16.658000000000015,
+        17.18909999999994,
+        29.687900000000013
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "FSM",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 35.048599999999965,
+      "runsMs": [
+        40.142999999999915,
+        35.048599999999965,
+        33.52719999999999
+      ],
+      "matchCount": 14
+    },
+    {
+      "algorithm": "FSM",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 35.501199999999926,
+      "runsMs": [
+        45.86329999999998,
+        35.501199999999926,
+        35.19730000000004
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "FSM",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 76.39809999999989,
+      "runsMs": [
+        73.04610000000002,
+        76.39809999999989,
+        76.54019999999991
+      ],
+      "matchCount": 31
+    },
+    {
+      "algorithm": "FSM",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 70.61189999999988,
+      "runsMs": [
+        77.6898000000001,
+        70.61189999999988,
+        69.67259999999987
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 1.0896000000000186,
+      "runsMs": [
+        1.547900000000027,
+        1.0896000000000186,
+        0.5679000000000087
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.5958000000000538,
+      "runsMs": [
+        0.6001000000001113,
+        0.5921000000000731,
+        0.5958000000000538
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 2.9910999999999603,
+      "runsMs": [
+        2.835199999999986,
+        3.2095999999999094,
+        2.9910999999999603
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 3.2249000000001615,
+      "runsMs": [
+        7.687400000000025,
+        3.2249000000001615,
+        3.12700000000018
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 6.565099999999802,
+      "runsMs": [
+        7.1090999999998985,
+        6.31880000000001,
+        6.565099999999802
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 6.420100000000048,
+      "runsMs": [
+        6.356100000000197,
+        7.248700000000099,
+        6.420100000000048
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 14.096399999999903,
+      "runsMs": [
+        15.699299999999994,
+        13.763299999999845,
+        14.096399999999903
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 15.514899999999898,
+      "runsMs": [
+        15.032899999999927,
+        15.619400000000041,
+        15.514899999999898
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 32.565200000000004,
+      "runsMs": [
+        32.334299999999985,
+        32.565200000000004,
+        34.72929999999997
+      ],
+      "matchCount": 14
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 33.92530000000011,
+      "runsMs": [
+        32.50040000000013,
+        33.92530000000011,
+        35.35969999999975
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 70.2147,
+      "runsMs": [
+        70.2147,
+        64.94570000000022,
+        70.4061999999999
+      ],
+      "matchCount": 31
+    },
+    {
+      "algorithm": "Rabin-Karp",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 65.54899999999998,
+      "runsMs": [
+        65.54899999999998,
+        70.0969,
+        64.91570000000002
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 1.5148999999996704,
+      "runsMs": [
+        1.682800000000043,
+        1.5148999999996704,
+        0.15679999999974825
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 10000,
+      "actualTextLength": 9856,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.13239999999996144,
+      "runsMs": [
+        0.13320000000021537,
+        0.13239999999996144,
+        0.13100000000031287
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 1.0072000000000116,
+      "runsMs": [
+        0.9479000000001179,
+        1.0072000000000116,
+        1.0511000000001332
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 50000,
+      "actualTextLength": 49006,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 0.9108000000001084,
+      "runsMs": [
+        1.3735999999998967,
+        0.9108000000001084,
+        0.753099999999904
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 1.7555999999999585,
+      "runsMs": [
+        1.9033999999996922,
+        1.7555999999999585,
+        1.7049000000001797
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 100000,
+      "actualTextLength": 98296,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 1.3040999999998348,
+      "runsMs": [
+        1.3040999999998348,
+        1.289900000000216,
+        1.3156000000003587
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 3.4208999999996195,
+      "runsMs": [
+        3.4208999999996195,
+        5.024199999999837,
+        3.316200000000208
+      ],
+      "matchCount": 0
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 200000,
+      "actualTextLength": 197008,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 3.9200000000000728,
+      "runsMs": [
+        3.9200000000000728,
+        4.209999999999582,
+        2.621299999999792
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 9.23030000000017,
+      "runsMs": [
+        10.83030000000008,
+        9.23030000000017,
+        8.860999999999876
+      ],
+      "matchCount": 14
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 500000,
+      "actualTextLength": 493599,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 6.804500000000189,
+      "runsMs": [
+        6.804500000000189,
+        6.5621000000001,
+        7.9560999999998785
+      ],
+      "matchCount": 1
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "small",
+      "patternStart": 391852,
+      "patternLength": 15,
+      "medianMs": 18.859800000000178,
+      "runsMs": [
+        18.859800000000178,
+        18.3433,
+        19.580399999999827
+      ],
+      "matchCount": 31
+    },
+    {
+      "algorithm": "Gusfield Z",
+      "size": 1000000,
+      "actualTextLength": 988330,
+      "patternType": "large",
+      "patternStart": 20000,
+      "patternLength": 300,
+      "medianMs": 15.723599999999806,
+      "runsMs": [
+        15.723599999999806,
+        13.66229999999996,
+        16.063900000000103
+      ],
+      "matchCount": 1
+    }
+  ]
+}

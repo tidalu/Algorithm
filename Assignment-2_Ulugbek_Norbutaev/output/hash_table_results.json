@@ -1,0 +1,411 @@
+{
+  "generatedAt": "2026-05-19T22:38:29.443Z",
+  "capacity": 20011,
+  "loadFactors": [
+    0.1,
+    0.25,
+    0.5,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "runs": 3,
+  "results": [
+    {
+      "table": "Separate Chaining",
+      "loadFactor": 0.1,
+      "capacity": 20011,
+      "itemCount": 2001,
+      "searchCount": 4002,
+      "insertMedianMs": 17.666199999999662,
+      "insertRunsMs": [
+        46.29410000000098,
+        17.666199999999662,
+        13.253000000000611
+      ],
+      "insertUsPerOp": 8.828685657171246,
+      "searchMedianMs": 9.122799999999188,
+      "searchRunsMs": [
+        9.122799999999188,
+        7.516999999999825,
+        16.040799999998853
+      ],
+      "searchUsPerOp": 2.279560219889852,
+      "found": 2001
+    },
+    {
+      "table": "Linear Probing",
+      "loadFactor": 0.1,
+      "capacity": 20011,
+      "itemCount": 2001,
+      "searchCount": 4002,
+      "insertMedianMs": 9.020300000000134,
+      "insertRunsMs": [
+        9.285100000000966,
+        4.227499999999054,
+        9.020300000000134
+      ],
+      "insertUsPerOp": 4.50789605197408,
+      "searchMedianMs": 6.865400000000591,
+      "searchRunsMs": [
+        7.8716999999996915,
+        6.865400000000591,
+        5.2951000000011845
+      ],
+      "searchUsPerOp": 1.7154922538732111,
+      "found": 2001
+    },
+    {
+      "table": "Double Hashing",
+      "loadFactor": 0.1,
+      "capacity": 20011,
+      "itemCount": 2001,
+      "searchCount": 4002,
+      "insertMedianMs": 5.766600000000835,
+      "insertRunsMs": [
+        16.245200000001205,
+        4.8443999999999505,
+        5.766600000000835
+      ],
+      "insertUsPerOp": 2.881859070465185,
+      "searchMedianMs": 7.624900000000707,
+      "searchRunsMs": [
+        8.099099999999453,
+        7.624900000000707,
+        6.919300000001385
+      ],
+      "searchUsPerOp": 1.9052723638182676,
+      "found": 2001
+    },
+    {
+      "table": "Separate Chaining",
+      "loadFactor": 0.25,
+      "capacity": 20011,
+      "itemCount": 5002,
+      "searchCount": 10004,
+      "insertMedianMs": 9.979300000000876,
+      "insertRunsMs": [
+        15.610599999999977,
+        9.979300000000876,
+        9.267900000000736
+      ],
+      "insertUsPerOp": 1.995061975210091,
+      "searchMedianMs": 7.75170000000071,
+      "searchRunsMs": [
+        8.617100000001301,
+        7.714400000000751,
+        7.75170000000071
+      ],
+      "searchUsPerOp": 0.7748600559776799,
+      "found": 5002
+    },
+    {
+      "table": "Linear Probing",
+      "loadFactor": 0.25,
+      "capacity": 20011,
+      "itemCount": 5002,
+      "searchCount": 10004,
+      "insertMedianMs": 3.391200000000026,
+      "insertRunsMs": [
+        3.9240000000008877,
+        3.391200000000026,
+        2.8793000000005122
+      ],
+      "insertUsPerOp": 0.6779688124750153,
+      "searchMedianMs": 7.3906000000006316,
+      "searchRunsMs": [
+        7.3906000000006316,
+        7.036900000000969,
+        8.303299999999581
+      ],
+      "searchUsPerOp": 0.7387644942023822,
+      "found": 5002
+    },
+    {
+      "table": "Double Hashing",
+      "loadFactor": 0.25,
+      "capacity": 20011,
+      "itemCount": 5002,
+      "searchCount": 10004,
+      "insertMedianMs": 6.423099999999977,
+      "insertRunsMs": [
+        6.86449999999968,
+        6.423099999999977,
+        6.041699999999764
+      ],
+      "insertUsPerOp": 1.2841063574570126,
+      "searchMedianMs": 18.432999999999083,
+      "searchRunsMs": [
+        18.947900000001027,
+        15.617599999999584,
+        18.432999999999083
+      ],
+      "searchUsPerOp": 1.8425629748099843,
+      "found": 5002
+    },
+    {
+      "table": "Separate Chaining",
+      "loadFactor": 0.5,
+      "capacity": 20011,
+      "itemCount": 10005,
+      "searchCount": 20010,
+      "insertMedianMs": 11.835100000000239,
+      "insertRunsMs": [
+        34.209499999999025,
+        11.835100000000239,
+        11.540000000000873
+      ],
+      "insertUsPerOp": 1.182918540729659,
+      "searchMedianMs": 22.422300000000178,
+      "searchRunsMs": [
+        22.422300000000178,
+        21.823300000000017,
+        31.900299999999334
+      ],
+      "searchUsPerOp": 1.1205547226386896,
+      "found": 10005
+    },
+    {
+      "table": "Linear Probing",
+      "loadFactor": 0.5,
+      "capacity": 20011,
+      "itemCount": 10005,
+      "searchCount": 20010,
+      "insertMedianMs": 14.736000000000786,
+      "insertRunsMs": [
+        21.163399999999456,
+        14.736000000000786,
+        10.234199999998964
+      ],
+      "insertUsPerOp": 1.4728635682159705,
+      "searchMedianMs": 26.82639999999992,
+      "searchRunsMs": [
+        19.925500000001193,
+        26.82639999999992,
+        32.465400000000955
+      ],
+      "searchUsPerOp": 1.3406496751624148,
+      "found": 10005
+    },
+    {
+      "table": "Double Hashing",
+      "loadFactor": 0.5,
+      "capacity": 20011,
+      "itemCount": 10005,
+      "searchCount": 20010,
+      "insertMedianMs": 12.878200000001016,
+      "insertRunsMs": [
+        18.647399999999834,
+        12.878200000001016,
+        12.15270000000055
+      ],
+      "insertUsPerOp": 1.2871764117942044,
+      "searchMedianMs": 34.822400000000926,
+      "searchRunsMs": [
+        37.943999999999505,
+        31.204600000000937,
+        34.822400000000926
+      ],
+      "searchUsPerOp": 1.740249875062515,
+      "found": 10005
+    },
+    {
+      "table": "Separate Chaining",
+      "loadFactor": 0.7,
+      "capacity": 20011,
+      "itemCount": 14007,
+      "searchCount": 28014,
+      "insertMedianMs": 27.434400000001915,
+      "insertRunsMs": [
+        27.434400000001915,
+        24.964599999999336,
+        76.62060000000201
+      ],
+      "insertUsPerOp": 1.958620689655309,
+      "searchMedianMs": 32.0199999999968,
+      "searchRunsMs": [
+        32.9372000000003,
+        32.0199999999968,
+        28.968199999999342
+      ],
+      "searchUsPerOp": 1.1429999286070107,
+      "found": 14007
+    },
+    {
+      "table": "Linear Probing",
+      "loadFactor": 0.7,
+      "capacity": 20011,
+      "itemCount": 14007,
+      "searchCount": 28014,
+      "insertMedianMs": 10.472299999997631,
+      "insertRunsMs": [
+        10.472299999997631,
+        10.420100000003004,
+        12.999500000001717
+      ],
+      "insertUsPerOp": 0.7476476047688749,
+      "searchMedianMs": 54.224599999997736,
+      "searchRunsMs": [
+        54.224599999997736,
+        44.390299999999115,
+        64.31360000000132
+      ],
+      "searchUsPerOp": 1.9356250446204661,
+      "found": 14007
+    },
+    {
+      "table": "Double Hashing",
+      "loadFactor": 0.7,
+      "capacity": 20011,
+      "itemCount": 14007,
+      "searchCount": 28014,
+      "insertMedianMs": 23.749400000000605,
+      "insertRunsMs": [
+        23.749400000000605,
+        19.917600000000675,
+        24.558000000000902
+      ],
+      "insertUsPerOp": 1.695537945313101,
+      "searchMedianMs": 59.189399999999296,
+      "searchRunsMs": [
+        59.189399999999296,
+        55.25460000000021,
+        64.83410000000003
+      ],
+      "searchUsPerOp": 2.1128507174983686,
+      "found": 14007
+    },
+    {
+      "table": "Separate Chaining",
+      "loadFactor": 0.8,
+      "capacity": 20011,
+      "itemCount": 16008,
+      "searchCount": 32016,
+      "insertMedianMs": 36.45650000000023,
+      "insertRunsMs": [
+        36.45650000000023,
+        29.746100000000297,
+        52.76900000000023
+      ],
+      "insertUsPerOp": 2.277392553723153,
+      "searchMedianMs": 39.254900000003545,
+      "searchRunsMs": [
+        40.87739999999758,
+        31.330999999998312,
+        39.254900000003545
+      ],
+      "searchUsPerOp": 1.226102573713254,
+      "found": 16008
+    },
+    {
+      "table": "Linear Probing",
+      "loadFactor": 0.8,
+      "capacity": 20011,
+      "itemCount": 16008,
+      "searchCount": 32016,
+      "insertMedianMs": 25.84860000000117,
+      "insertRunsMs": [
+        22.454000000001543,
+        26.283699999999953,
+        25.84860000000117
+      ],
+      "insertUsPerOp": 1.6147301349326069,
+      "searchMedianMs": 86.36349999999948,
+      "searchRunsMs": [
+        75.85970000000088,
+        86.36349999999948,
+        88.98539999999775
+      ],
+      "searchUsPerOp": 2.6975106196901386,
+      "found": 16008
+    },
+    {
+      "table": "Double Hashing",
+      "loadFactor": 0.8,
+      "capacity": 20011,
+      "itemCount": 16008,
+      "searchCount": 32016,
+      "insertMedianMs": 28.998100000000704,
+      "insertRunsMs": [
+        28.998100000000704,
+        49.463700000000244,
+        22.47849999999744
+      ],
+      "insertUsPerOp": 1.8114755122439221,
+      "searchMedianMs": 65.21549999999843,
+      "searchRunsMs": [
+        61.439299999998184,
+        75.44759999999951,
+        65.21549999999843
+      ],
+      "searchUsPerOp": 2.036965892053924,
+      "found": 16008
+    },
+    {
+      "table": "Separate Chaining",
+      "loadFactor": 0.9,
+      "capacity": 20011,
+      "itemCount": 18009,
+      "searchCount": 36018,
+      "insertMedianMs": 35.032899999998335,
+      "insertRunsMs": [
+        41.48700000000099,
+        35.032899999998335,
+        16.74829999999929
+      ],
+      "insertUsPerOp": 1.9452995724359117,
+      "searchMedianMs": 36.662100000001374,
+      "searchRunsMs": [
+        57.005199999999604,
+        36.662100000001374,
+        35.29320000000007
+      ],
+      "searchUsPerOp": 1.0178827253040528,
+      "found": 18009
+    },
+    {
+      "table": "Linear Probing",
+      "loadFactor": 0.9,
+      "capacity": 20011,
+      "itemCount": 18009,
+      "searchCount": 36018,
+      "insertMedianMs": 38.78989999999976,
+      "insertRunsMs": [
+        35.82960000000094,
+        38.78989999999976,
+        47.503499999998894
+      ],
+      "insertUsPerOp": 2.1539174857015806,
+      "searchMedianMs": 278.4984999999979,
+      "searchRunsMs": [
+        241.67019999999684,
+        278.4984999999979,
+        394.14719999999943
+      ],
+      "searchUsPerOp": 7.7322033427729995,
+      "found": 18009
+    },
+    {
+      "table": "Double Hashing",
+      "loadFactor": 0.9,
+      "capacity": 20011,
+      "itemCount": 18009,
+      "searchCount": 36018,
+      "insertMedianMs": 36.913799999998446,
+      "insertRunsMs": [
+        36.913799999998446,
+        37.76090000000113,
+        24.43630000000121
+      ],
+      "insertUsPerOp": 2.049741795768696,
+      "searchMedianMs": 115.79699999999866,
+      "searchRunsMs": [
+        94.80200000000332,
+        115.79699999999866,
+        123.86109999999826
+      ],
+      "searchUsPerOp": 3.214975845410591,
+      "found": 18009
+    }
+  ]
+}
