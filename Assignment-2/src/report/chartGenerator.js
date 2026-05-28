@@ -8,6 +8,14 @@ const { assignmentRoot } = require("../utils/text");
 const DEFAULT_CHART_DIR = assignmentRoot("output", "charts");
 const PALETTE = ["#2563eb", "#dc2626", "#059669", "#7c3aed", "#ea580c", "#0891b2", "#be123c"];
 
+function ensurePuppeteer() {
+  try {
+    return require("puppeteer");
+  } catch (error) {
+    throw new Error("puppeteer is not installed. Run npm install before generating PNG charts.");
+  }
+}
+
 function escapeXml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -164,6 +172,38 @@ function barChart(options) {
 </svg>`;
 }
 
+function svgSize(svg) {
+  const match = svg.match(/<svg[^>]*\swidth="(\d+)"[^>]*\sheight="(\d+)"/);
+  if (!match) return { width: 960, height: 560 };
+  return {
+    width: Number(match[1]),
+    height: Number(match[2])
+  };
+}
+
+async function writePngChart(page, svg, outputFile) {
+  const { width, height } = svgSize(svg);
+  const dataUri = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
+
+  await page.setViewport({ width, height, deviceScaleFactor: 1 });
+  await page.setContent(`<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #ffffff; }
+    img { display: block; width: ${width}px; height: ${height}px; }
+  </style>
+</head>
+<body>
+  <img src="${dataUri}" alt="">
+</body>
+</html>`, { waitUntil: "load" });
+
+  await page.screenshot({ path: outputFile, type: "png", clip: { x: 0, y: 0, width, height } });
+}
+
 function groupLookupSeries(spellResults) {
   const byDictionary = new Map();
   for (const row of spellResults.lookupResults) {
@@ -203,60 +243,81 @@ function groupHashSeries(hashResults, metric) {
 async function generateCharts(inputs, outputDir = DEFAULT_CHART_DIR) {
   const { spellResults, hashResults } = inputs;
   fs.mkdirSync(outputDir, { recursive: true });
+  const puppeteer = ensurePuppeteer();
+  const browser = await puppeteer.launch({ headless: "new" });
 
-  const lookupSvg = lineChart({
-    title: "Spell Checking RT vs Text Length",
-    xLabel: "Text length in characters",
-    yLabel: "Median lookup time (ms)",
-    series: groupLookupSeries(spellResults)
-  });
-  fs.writeFileSync(path.join(outputDir, "spell_lookup_rt.svg"), lookupSvg);
+  try {
+    const page = await browser.newPage();
+    const charts = [
+      {
+        key: "lookup",
+        fileName: "spell_lookup_rt.png",
+        svg: lineChart({
+          title: "Spell Checking RT vs Text Length",
+          xLabel: "Text length in characters",
+          yLabel: "Median lookup time (ms)",
+          series: groupLookupSeries(spellResults)
+        })
+      },
+      {
+        key: "build",
+        fileName: "dictionary_build_time.png",
+        svg: barChart({
+          title: "Dictionary Build Time",
+          yLabel: "Build time (ms)",
+          bars: spellResults.buildResults.map((row, index) => ({
+            label: row.dictionary,
+            value: row.buildMedianMs,
+            color: PALETTE[index % PALETTE.length]
+          }))
+        })
+      },
+      {
+        key: "memory",
+        fileName: "dictionary_memory.png",
+        svg: barChart({
+          title: "Estimated Dictionary Memory",
+          yLabel: "Estimated memory (MB)",
+          bars: spellResults.buildResults.map((row, index) => ({
+            label: row.dictionary,
+            value: row.memoryBytes / (1024 * 1024),
+            color: PALETTE[index % PALETTE.length]
+          }))
+        })
+      },
+      {
+        key: "hashInsert",
+        fileName: "hash_insert_vs_load.png",
+        svg: lineChart({
+          title: "Hash Table Insert Time vs Load Factor",
+          xLabel: "Load factor",
+          yLabel: "Median insert time (microseconds/op)",
+          series: groupHashSeries(hashResults, "insertUsPerOp")
+        })
+      },
+      {
+        key: "hashSearch",
+        fileName: "hash_search_vs_load.png",
+        svg: lineChart({
+          title: "Hash Table Search Time vs Load Factor",
+          xLabel: "Load factor",
+          yLabel: "Median search time (microseconds/op)",
+          series: groupHashSeries(hashResults, "searchUsPerOp")
+        })
+      }
+    ];
 
-  const buildSvg = barChart({
-    title: "Dictionary Build Time",
-    yLabel: "Build time (ms)",
-    bars: spellResults.buildResults.map((row, index) => ({
-      label: row.dictionary,
-      value: row.buildMedianMs,
-      color: PALETTE[index % PALETTE.length]
-    }))
-  });
-  fs.writeFileSync(path.join(outputDir, "dictionary_build_time.svg"), buildSvg);
+    const output = {};
+    for (const chart of charts) {
+      const outputFile = path.join(outputDir, chart.fileName);
+      await writePngChart(page, chart.svg, outputFile);
+      output[chart.key] = outputFile;
+    }
 
-  const memorySvg = barChart({
-    title: "Estimated Dictionary Memory",
-    yLabel: "Estimated memory (MB)",
-    bars: spellResults.buildResults.map((row, index) => ({
-      label: row.dictionary,
-      value: row.memoryBytes / (1024 * 1024),
-      color: PALETTE[index % PALETTE.length]
-    }))
-  });
-  fs.writeFileSync(path.join(outputDir, "dictionary_memory.svg"), memorySvg);
-
-  const insertSvg = lineChart({
-    title: "Hash Table Insert Time vs Load Factor",
-    xLabel: "Load factor",
-    yLabel: "Median insert time (microseconds/op)",
-    series: groupHashSeries(hashResults, "insertUsPerOp")
-  });
-  fs.writeFileSync(path.join(outputDir, "hash_insert_vs_load.svg"), insertSvg);
-
-  const searchSvg = lineChart({
-    title: "Hash Table Search Time vs Load Factor",
-    xLabel: "Load factor",
-    yLabel: "Median search time (microseconds/op)",
-    series: groupHashSeries(hashResults, "searchUsPerOp")
-  });
-  fs.writeFileSync(path.join(outputDir, "hash_search_vs_load.svg"), searchSvg);
-
-  return {
-    lookup: path.join(outputDir, "spell_lookup_rt.svg"),
-    build: path.join(outputDir, "dictionary_build_time.svg"),
-    memory: path.join(outputDir, "dictionary_memory.svg"),
-    hashInsert: path.join(outputDir, "hash_insert_vs_load.svg"),
-    hashSearch: path.join(outputDir, "hash_search_vs_load.svg")
-  };
+    return output;
+  } finally {
+    await browser.close();
+  }
 }
 
 if (require.main === module) {

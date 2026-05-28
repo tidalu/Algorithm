@@ -2,6 +2,10 @@
 
 A Node.js implementation of six exact pattern matching algorithms, wildcard matching, and 2D Rabin-Karp, with automated benchmarking, chart generation, and PDF report output.
 
+## Assignment description
+[Assignment description](./assignments%20descriptions.md)
+
+
 ## Quick Start
 
 ```bash
@@ -121,6 +125,8 @@ rabinKarp2D(picture, K)
 Items are mapped to integers before hashing. Row hashes are computed first, then combined vertically with a rolling hash. Hash collisions are resolved by direct K×K comparison. Expected time: O(M·N).
 
 ---
+
+
 
 ## REFERENCES
 

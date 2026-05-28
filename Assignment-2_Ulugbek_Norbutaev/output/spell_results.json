@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-19T22:38:24.804Z",
+  "generatedAt": "2026-05-28T14:02:47.129Z",
   "dictionaryLimit": 30000,
   "dictionarySize": 30000,
   "textSizes": [
@@ -13,54 +13,54 @@
   "buildResults": [
     {
       "dictionary": "Linear List",
-      "buildMedianMs": 0.9560999999999922,
+      "buildMedianMs": 0.1688000000000045,
       "buildRunsMs": [
-        0.9560999999999922
+        0.1688000000000045
       ],
       "memoryBytes": 753754,
       "dictionarySize": 30000
     },
     {
       "dictionary": "Red-Black Tree",
-      "buildMedianMs": 95.75039999999899,
+      "buildMedianMs": 20.317799999999806,
       "buildRunsMs": [
-        95.75039999999899
+        20.317799999999806
       ],
       "memoryBytes": 2433754,
       "dictionarySize": 30000
     },
     {
       "dictionary": "Ordinary Trie",
-      "buildMedianMs": 121.32710000000043,
+      "buildMedianMs": 17.212999999999738,
       "buildRunsMs": [
-        121.32710000000043
+        17.212999999999738
       ],
       "memoryBytes": 4748376,
       "dictionarySize": 30000
     },
     {
       "dictionary": "Hash Map",
-      "buildMedianMs": 20.80030000000079,
+      "buildMedianMs": 3.6754000000000815,
       "buildRunsMs": [
-        20.80030000000079
+        3.6754000000000815
       ],
       "memoryBytes": 1953754,
       "dictionarySize": 30000
     },
     {
       "dictionary": "Balanced Ternary Trie",
-      "buildMedianMs": 122.8744999999999,
+      "buildMedianMs": 24.14889999999923,
       "buildRunsMs": [
-        122.8744999999999
+        24.14889999999923
       ],
       "memoryBytes": 3693144,
       "dictionarySize": 30000
     },
     {
       "dictionary": "Double-Array Trie",
-      "buildMedianMs": 659.0739999999987,
+      "buildMedianMs": 96.49079999999958,
       "buildRunsMs": [
-        659.0739999999987
+        96.49079999999958
       ],
       "memoryBytes": 1433916,
       "dictionarySize": 30000
@@ -72,11 +72,11 @@
       "requestedChars": 5000,
       "actualChars": 5009,
       "tokenCount": 526,
-      "lookupMedianMs": 34.456300000000056,
+      "lookupMedianMs": 21.927300000000002,
       "lookupRunsMs": [
-        67.4685,
-        34.017600000000016,
-        34.456300000000056
+        21.818200000000004,
+        21.9974,
+        21.927300000000002
       ],
       "correct": 478,
       "misspelled": 48
@@ -86,11 +86,11 @@
       "requestedChars": 10000,
       "actualChars": 10003,
       "tokenCount": 1038,
-      "lookupMedianMs": 101.96570000000008,
+      "lookupMedianMs": 54.022999999999996,
       "lookupRunsMs": [
-        101.96570000000008,
-        109.96019999999999,
-        86.06319999999994
+        54.29939999999999,
+        54.022999999999996,
+        52.08619999999996
       ],
       "correct": 943,
       "misspelled": 95
@@ -100,11 +100,11 @@
       "requestedChars": 20000,
       "actualChars": 19999,
       "tokenCount": 2084,
-      "lookupMedianMs": 157.4152999999999,
+      "lookupMedianMs": 116.8954,
       "lookupRunsMs": [
-        152.5528999999999,
-        157.4152999999999,
-        168.9608999999998
+        114.4176,
+        116.8954,
+        128.78199999999993
       ],
       "correct": 1894,
       "misspelled": 190
@@ -114,11 +114,11 @@
       "requestedChars": 50000,
       "actualChars": 49999,
       "tokenCount": 5166,
-      "lookupMedianMs": 561.6225,
+      "lookupMedianMs": 372.07849999999985,
       "lookupRunsMs": [
-        561.6225,
-        554.0547000000001,
-        1192.5769999999998
+        359.8835,
+        372.07849999999985,
+        382.5715
       ],
       "correct": 4696,
       "misspelled": 470
@@ -128,11 +128,11 @@
       "requestedChars": 100000,
       "actualChars": 100008,
       "tokenCount": 10328,
-      "lookupMedianMs": 3356.958699999999,
+      "lookupMedianMs": 779.4787999999999,
       "lookupRunsMs": [
-        3553.5692999999997,
-        3356.958699999999,
-        3246.7626999999993
+        741.6442000000002,
+        813.9355,
+        779.4787999999999
       ],
       "correct": 9389,
       "misspelled": 939
@@ -142,11 +142,11 @@
       "requestedChars": 5000,
       "actualChars": 5009,
       "tokenCount": 526,
-      "lookupMedianMs": 1.7767999999996391,
+      "lookupMedianMs": 0.39720000000033906,
       "lookupRunsMs": [
-        3.552799999999479,
-        1.0925999999999476,
-        1.7767999999996391
+        0.6172999999998865,
+        0.39720000000033906,
+        0.3930000000000291
       ],
       "correct": 478,
       "misspelled": 48
@@ -156,11 +156,11 @@
       "requestedChars": 10000,
       "actualChars": 10003,
       "tokenCount": 1038,
-      "lookupMedianMs": 1.5630000000001019,
+      "lookupMedianMs": 0.5001000000002023,
       "lookupRunsMs": [
-        1.5630000000001019,
-        1.6867999999994936,
-        1.1452999999983149
+        0.6275999999998021,
+        0.5001000000002023,
+        0.4562999999998283
       ],
       "correct": 943,
       "misspelled": 95
@@ -170,11 +170,11 @@
       "requestedChars": 20000,
       "actualChars": 19999,
       "tokenCount": 2084,
-      "lookupMedianMs": 2.7347000000008848,
+      "lookupMedianMs": 1.1098000000001775,
       "lookupRunsMs": [
-        2.4333999999998923,
-        2.7347000000008848,
-        2.966200000000754
+        0.9819999999999709,
+        1.3438999999998487,
+        1.1098000000001775
       ],
       "correct": 1894,
       "misspelled": 190
@@ -184,11 +184,11 @@
       "requestedChars": 50000,
       "actualChars": 49999,
       "tokenCount": 5166,
-      "lookupMedianMs": 8.271099999999933,
+      "lookupMedianMs": 2.3136999999996988,
       "lookupRunsMs": [
-        8.271099999999933,
-        6.889199999999619,
-        8.285400000000664
+        2.725000000000364,
+        2.3136999999996988,
+        2.2726000000002387
       ],
       "correct": 4696,
       "misspelled": 470
@@ -198,11 +198,11 @@
       "requestedChars": 100000,
       "actualChars": 100008,
       "tokenCount": 10328,
-      "lookupMedianMs": 19.109400000001187,
+      "lookupMedianMs": 4.400500000000648,
       "lookupRunsMs": [
-        12.899199999999837,
-        20.89969999999994,
-        19.109400000001187
+        4.400500000000648,
+        4.324200000000019,
+        5.060999999999694
       ],
       "correct": 9389,
       "misspelled": 939
@@ -212,11 +212,11 @@
       "requestedChars": 5000,
       "actualChars": 5009,
       "tokenCount": 526,
-      "lookupMedianMs": 3.731499999999869,
+      "lookupMedianMs": 0.7480999999997948,
       "lookupRunsMs": [
-        4.141200000000026,
-        3.731499999999869,
-        2.8606999999992695
+        0.8789999999999054,
+        0.7480999999997948,
+        0.5374000000001615
       ],
       "correct": 478,
       "misspelled": 48
@@ -226,11 +226,11 @@
       "requestedChars": 10000,
       "actualChars": 10003,
       "tokenCount": 1038,
-      "lookupMedianMs": 3.1071000000010827,
+      "lookupMedianMs": 0.6017000000001644,
       "lookupRunsMs": [
-        8.653800000000047,
-        3.1071000000010827,
-        2.6796999999987747
+        1.0700999999999112,
+        0.6017000000001644,
+        0.4297999999998865
       ],
       "correct": 943,
       "misspelled": 95
@@ -240,11 +240,11 @@
       "requestedChars": 20000,
       "actualChars": 19999,
       "tokenCount": 2084,
-      "lookupMedianMs": 4.125599999999395,
+      "lookupMedianMs": 1.2312000000001717,
       "lookupRunsMs": [
-        5.761199999999008,
-        3.099500000000262,
-        4.125599999999395
+        1.2924000000002707,
+        1.2312000000001717,
+        1.031500000000051
       ],
       "correct": 1894,
       "misspelled": 190
@@ -254,11 +254,11 @@
       "requestedChars": 50000,
       "actualChars": 49999,
       "tokenCount": 5166,
-      "lookupMedianMs": 14.706000000000131,
+      "lookupMedianMs": 2.8095000000002983,
       "lookupRunsMs": [
-        12.838200000000143,
-        15.106400000000576,
-        14.706000000000131
+        2.952499999999418,
+        2.8095000000002983,
+        2.0351999999993495
       ],
       "correct": 4696,
       "misspelled": 470
@@ -268,11 +268,11 @@
       "requestedChars": 100000,
       "actualChars": 100008,
       "tokenCount": 10328,
-      "lookupMedianMs": 27.133299999999508,
+      "lookupMedianMs": 4.408699999999953,
       "lookupRunsMs": [
-        27.133299999999508,
-        28.374499999999898,
-        25.598700000000463
+        4.722900000000664,
+        4.408699999999953,
+        4.163099999999758
       ],
       "correct": 9389,
       "misspelled": 939
@@ -282,11 +282,11 @@
       "requestedChars": 5000,
       "actualChars": 5009,
       "tokenCount": 526,
-      "lookupMedianMs": 0.24160000000119908,
+      "lookupMedianMs": 0.06499999999959982,
       "lookupRunsMs": [
-        0.7213000000010652,
-        0.21010000000023865,
-        0.24160000000119908
+        0.18000000000029104,
+        0.06499999999959982,
+        0.06300000000010186
       ],
       "correct": 478,
       "misspelled": 48
@@ -296,11 +296,11 @@
       "requestedChars": 10000,
       "actualChars": 10003,
       "tokenCount": 1038,
-      "lookupMedianMs": 1.0750000000007276,
+      "lookupMedianMs": 0.15100000000074942,
       "lookupRunsMs": [
-        1.7506000000012136,
-        1.0750000000007276,
-        0.6087999999999738
+        0.1717000000007829,
+        0.15100000000074942,
+        0.12190000000009604
       ],
       "correct": 943,
       "misspelled": 95
@@ -310,11 +310,11 @@
       "requestedChars": 20000,
       "actualChars": 19999,
       "tokenCount": 2084,
-      "lookupMedianMs": 2.3119000000006054,
+      "lookupMedianMs": 0.25010000000020227,
       "lookupRunsMs": [
-        1.6231000000007043,
-        2.3654999999998836,
-        2.3119000000006054
+        0.3682999999991807,
+        0.24249999999938154,
+        0.25010000000020227
       ],
       "correct": 1894,
       "misspelled": 190
@@ -324,11 +324,11 @@
       "requestedChars": 50000,
       "actualChars": 49999,
       "tokenCount": 5166,
-      "lookupMedianMs": 4.945499999999811,
+      "lookupMedianMs": 0.6117999999996755,
       "lookupRunsMs": [
-        5.426499999999578,
-        4.945499999999811,
-        3.87329999999929
+        0.7431000000005952,
+        0.6006999999999607,
+        0.6117999999996755
       ],
       "correct": 4696,
       "misspelled": 470
@@ -338,11 +338,11 @@
       "requestedChars": 100000,
       "actualChars": 100008,
       "tokenCount": 10328,
-      "lookupMedianMs": 4.738199999999779,
+      "lookupMedianMs": 1.2698999999993248,
       "lookupRunsMs": [
-        12.363600000000588,
-        4.738199999999779,
-        3.0491000000001804
+        1.4557000000004336,
+        1.2698999999993248,
+        0.6089999999994689
       ],
       "correct": 9389,
       "misspelled": 939
@@ -352,11 +352,11 @@
       "requestedChars": 5000,
       "actualChars": 5009,
       "tokenCount": 526,
-      "lookupMedianMs": 3.0859999999993306,
+      "lookupMedianMs": 0.4434000000001106,
       "lookupRunsMs": [
-        4.017099999999118,
-        2.2690999999995256,
-        3.0859999999993306
+        0.6335999999992055,
+        0.42299999999977445,
+        0.4434000000001106
       ],
       "correct": 478,
       "misspelled": 48
@@ -366,11 +366,11 @@
       "requestedChars": 10000,
       "actualChars": 10003,
       "tokenCount": 1038,
-      "lookupMedianMs": 1.5315999999984342,
+      "lookupMedianMs": 0.38289999999960855,
       "lookupRunsMs": [
-        3.459600000000137,
-        1.4868999999998778,
-        1.5315999999984342
+        0.8560999999999694,
+        0.38289999999960855,
+        0.3035999999992782
       ],
       "correct": 943,
       "misspelled": 95
@@ -380,11 +380,11 @@
       "requestedChars": 20000,
       "actualChars": 19999,
       "tokenCount": 2084,
-      "lookupMedianMs": 4.401099999999133,
+      "lookupMedianMs": 0.6333999999997104,
       "lookupRunsMs": [
-        3.7153999999991356,
-        4.401099999999133,
-        5.861300000000483
+        0.6553999999996449,
+        0.6319000000003143,
+        0.6333999999997104
       ],
       "correct": 1894,
       "misspelled": 190
@@ -394,11 +394,11 @@
       "requestedChars": 50000,
       "actualChars": 49999,
       "tokenCount": 5166,
-      "lookupMedianMs": 7.227500000000873,
+      "lookupMedianMs": 1.6468000000004395,
       "lookupRunsMs": [
-        10.649999999999636,
-        7.227500000000873,
-        7.150200000000041
+        1.6468000000004395,
+        1.6585999999997512,
+        1.4508000000005268
       ],
       "correct": 4696,
       "misspelled": 470
@@ -408,11 +408,11 @@
       "requestedChars": 100000,
       "actualChars": 100008,
       "tokenCount": 10328,
-      "lookupMedianMs": 21.688599999999497,
+      "lookupMedianMs": 2.8276000000005297,
       "lookupRunsMs": [
-        22.88630000000012,
-        21.688599999999497,
-        17.69930000000022
+        2.791500000000269,
+        2.8276000000005297,
+        3.285899999999856
       ],
       "correct": 9389,
       "misspelled": 939
@@ -422,11 +422,11 @@
       "requestedChars": 5000,
       "actualChars": 5009,
       "tokenCount": 526,
-      "lookupMedianMs": 2.867499999998472,
+      "lookupMedianMs": 0.4621000000006461,
       "lookupRunsMs": [
-        3.4350000000013097,
-        2.867499999998472,
-        1.3497999999999593
+        0.555899999999383,
+        0.4621000000006461,
+        0.33989999999994325
       ],
       "correct": 478,
       "misspelled": 48
@@ -436,11 +436,11 @@
       "requestedChars": 10000,
       "actualChars": 10003,
       "tokenCount": 1038,
-      "lookupMedianMs": 2.9279999999998836,
+      "lookupMedianMs": 0.7093999999997322,
       "lookupRunsMs": [
-        2.9279999999998836,
-        3.09690000000046,
-        0.8523000000004686
+        0.7093999999997322,
+        0.7125999999998385,
+        0.4522999999999229
       ],
       "correct": 943,
       "misspelled": 95
@@ -450,11 +450,11 @@
       "requestedChars": 20000,
       "actualChars": 19999,
       "tokenCount": 2084,
-      "lookupMedianMs": 1.6750000000010914,
+      "lookupMedianMs": 0.4139000000004671,
       "lookupRunsMs": [
-        1.6750000000010914,
-        1.346799999999348,
-        1.7397000000000844
+        0.43690000000060536,
+        0.4139000000004671,
+        0.41080000000056316
       ],
       "correct": 1894,
       "misspelled": 190
@@ -464,11 +464,11 @@
       "requestedChars": 50000,
       "actualChars": 49999,
       "tokenCount": 5166,
-      "lookupMedianMs": 4.757100000000719,
+      "lookupMedianMs": 1.066899999999805,
       "lookupRunsMs": [
-        4.034600000000864,
-        4.7674000000006345,
-        4.757100000000719
+        1.1018000000003667,
+        1.066899999999805,
+        1.0287000000007538
       ],
       "correct": 4696,
       "misspelled": 470
@@ -478,11 +478,11 @@
       "requestedChars": 100000,
       "actualChars": 100008,
       "tokenCount": 10328,
-      "lookupMedianMs": 10.663399999999456,
+      "lookupMedianMs": 2.088300000000345,
       "lookupRunsMs": [
-        8.988499999999476,
-        10.663399999999456,
-        10.818099999998594
+        2.10359999999946,
+        2.088300000000345,
+        2.0826999999999316
       ],
       "correct": 9389,
       "misspelled": 939

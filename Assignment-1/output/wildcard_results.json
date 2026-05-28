@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-29T14:18:52.678Z",
+  "generatedAt": "2026-05-28T13:31:12.154Z",
   "tests": [
     {
       "name": "basic literal",
@@ -124,11 +124,11 @@
     "pattern": "n*Z?nd",
     "bruteForceWildcard": {
       "result": true,
-      "ms": 1.1365000000000123
+      "ms": 0.8703000000000429
     },
     "sundayWildcard": {
       "result": true,
-      "ms": 2.840600000000009
+      "ms": 1.759900000000016
     }
   }
 }

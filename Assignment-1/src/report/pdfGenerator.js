@@ -57,10 +57,13 @@ function benchmarkAnalysis(benchmarkResults) {
 
     const sorted = Array.from(totals, ([algorithm, total]) => ({ algorithm, total }))
       .sort((a, b) => a.total - b.total);
-    return `${patternType} pattern: ${sorted[0].algorithm} had the lowest total median time, while ${sorted[sorted.length - 1].algorithm} had the highest.`;
+    return `${patternType} pattern: ${sorted[0].algorithm} had the lowest total median ` +
+           `time, while ${sorted[sorted.length - 1].algorithm} had the highest.`;
   });
 
-  return `${byPattern.join(" ")} Across increasing text sizes, the linear-time methods grow close to linearly, while methods that compare many characters per alignment become visibly more sensitive to pattern length and input structure.`;
+  return `${byPattern.join("  ")} Across increasing text sizes, the linear-time ` +
+    `methods grow close to linearly, while methods that compare many characters per ` +
+    `alignment become visibly more sensitive to pattern length and input structure.`;
 }
 
 function tableRows(rows, cells) {
@@ -72,83 +75,69 @@ function algorithmDescriptionsHtml() {
     {
       name: "Brute Force",
       category: "Exact matching baseline",
-      core: "Tries every possible alignment of the pattern in the text and compares characters from left to right. It does no preprocessing and is easy to reason about. It is often quick when mismatches happen immediately, but repeated prefixes can force many repeated comparisons.",
-      preprocessing: "None.",
-      search: "For each index i, compare P[0..m-1] with T[i..i+m-1].",
-      time: "Preprocessing O(1). Search O(n*m) worst case, often much better on random text.",
+      core: "Tries every possible alignment of the pattern in the text and compares characters from left to right.  It does no preprocessing and is easy to reason about.",
+      time: "O(1) preprocessing.  O(n*m) worst case, often better on random text.",
       space: "O(1) besides the output array.",
       best: "Most windows fail on the first character.",
-      worst: "Text and pattern share long repeated prefixes, such as many a characters followed by one mismatch."
+      worst: "Text and pattern share long repeated prefixes."
     },
     {
       name: "Sunday",
       category: "Heuristic bad-character shift method",
-      core: "Compares a window, then looks at the character immediately after that window. The next possible match must include that character, so the algorithm shifts the pattern to align it with its rightmost occurrence. If the character is absent from the pattern, the whole window is skipped.",
-      preprocessing: "Build a full bad-character shift table with default shift m + 1.",
-      search: "Compare the current window, record a match if complete, then shift using T[i + m].",
-      time: "Preprocessing O(m + alphabet). Average often sublinear; worst case O(n*m).",
+      core: "After comparing a window, looks at the character immediately after that window.  Shifts the pattern to align that character with its rightmost occurrence in the pattern.  If absent, skips the whole window.",
+      time: "O(m + alphabet) preprocessing.  Average often sublinear; O(n*m) worst case.",
       space: "O(alphabet) for the shift table.",
-      best: "Characters after windows are not in the pattern, producing m + 1 jumps.",
+      best: "After-window characters absent from pattern yield m+1 jumps.",
       worst: "Highly repetitive inputs cause tiny shifts and many comparisons."
     },
     {
-      name: "KMP",
+      name: "KMP (Knuth-Morris-Pratt)",
       category: "Exact linear-time prefix-function algorithm",
-      core: "Reuses information from a partial match. When a mismatch happens after j matched characters, KMP knows which pattern prefix is also a suffix of the matched text and resumes there instead of restarting from zero.",
-      preprocessing: "Build the prefix/failure function f for the pattern.",
-      search: "Scan the text once while maintaining how many pattern characters are currently matched.",
-      time: "Preprocessing O(m). Search O(n). Worst case O(n + m).",
+      core: "Builds a prefix/failure function f[i] = length of the longest proper prefix of P[0..i] that is also a suffix.  On mismatch after j matches, resumes at f[j-1] instead of restarting.",
+      time: "O(m) preprocessing.  O(n) search.  O(n+m) total.",
       space: "O(m) for the prefix table.",
-      best: "Long patterns with repeated structure, where naive search would re-check characters.",
-      worst: "Still linear; the constant factor appears when many fallback transitions occur."
+      best: "Patterns with repeated structure where naive search re-checks characters.",
+      worst: "Still linear; fallback transitions add a constant factor."
     },
     {
-      name: "FSM",
+      name: "FSM (Finite State Machine)",
       category: "Deterministic finite automaton exact matcher",
-      core: "Builds a machine with states 0..m, where state q means q pattern characters have been matched. Each incoming text character moves the machine to the next state. State m is accepting and reports a match.",
-      preprocessing: "Build delta[state][char] transitions using the KMP fallback idea.",
-      search: "Read each text character, follow one transition, and record accepting states.",
-      time: "Preprocessing O(m * alphabet). Search O(n).",
-      space: "O(m * alphabet), which can be large.",
-      best: "Repeated searches with the same pattern and alphabet, where preprocessing can be reused.",
-      worst: "Large alphabets make the transition table expensive."
+      core: "Builds states 0..m where state q means q pattern characters have been matched.  Each text character follows one transition.  State m is accepting.",
+      time: "O(m * alphabet) preprocessing.  O(n) search.",
+      space: "O(m * alphabet), which can be large for wide alphabets.",
+      best: "Repeated searches with the same pattern where preprocessing is amortized.",
+      worst: "Large alphabets make the transition table expensive to build and store."
     },
     {
       name: "Rabin-Karp",
       category: "Rolling-hash exact matcher",
-      core: "Represents the pattern and each text window by a numeric hash. A rolling update moves the hash one character to the right in constant time. Matching hashes are verified with an exact comparison to guard against collisions.",
-      preprocessing: "Compute the pattern hash, first window hash, and highest base power.",
-      search: "Slide the window, compare hashes, and verify when hashes match.",
-      time: "Average O(n + m). Worst case O(n*m) if every window requires verification.",
+      core: "Hashes the pattern and each text window.  A rolling update slides the hash one character right in O(1).  Hash matches are verified by direct comparison to guard against collisions.",
+      time: "O(n+m) average.  O(n*m) worst case if every window requires verification.",
       space: "O(1) besides output.",
       best: "Few hash matches and therefore few full verifications.",
       worst: "Many true matches or collisions force repeated character-by-character checks."
     },
     {
-      name: "Gusfield Z",
+      name: "Gusfield Z-Algorithm",
       category: "Exact linear-time Z-array method",
-      core: "Builds S = P + separator + T and computes, for every position, how many characters match the prefix of S. A full pattern match in the text appears as a Z value of at least m after the separator.",
-      preprocessing: "Construct the combined string and compute its Z-array using the rightmost Z-box.",
-      search: "Read Z positions corresponding to text offsets and report those equal to the pattern length.",
-      time: "O(n + m) to build and scan the Z-array.",
-      space: "O(n + m) for the combined string and Z-array.",
-      best: "When the full Z-array is useful, such as prefix-analysis tasks or one-shot exact search.",
-      worst: "Still linear, but it always allocates and scans the combined string."
+      core: "Builds S = P + separator + T and computes, for every position, how many characters match the prefix of S.  A Z value of at least m after the separator indicates a full match.",
+      time: "O(n+m) to build and scan the Z-array.",
+      space: "O(n+m) for the combined string and Z-array.",
+      best: "One-shot exact search or prefix-analysis tasks.",
+      worst: "Still linear, but always allocates and scans the full combined string."
     }
   ];
 
-  return descriptions.map((item) => `
-    <article class="algorithm">
-      <h3>${item.name}</h3>
-      <p><strong>Category:</strong> ${item.category}</p>
-      <p><strong>Core idea:</strong> ${item.core}</p>
-      <p><strong>Preprocessing:</strong> ${item.preprocessing}</p>
-      <p><strong>Search:</strong> ${item.search}</p>
-      <p><strong>Time complexity:</strong> ${item.time}</p>
-      <p><strong>Space complexity:</strong> ${item.space}</p>
-      <p><strong>Best case:</strong> ${item.best}</p>
-      <p><strong>Worst case:</strong> ${item.worst}</p>
-    </article>
+  return descriptions.map((item, idx) => `
+    <div class="algo-block">
+      <p class="algo-name">2.${idx + 1}.  ${item.name}</p>
+      <p class="algo-cat">   Category: ${item.category}</p>
+      <p class="algo-field"><span class="label">   Core idea:</span> ${item.core}</p>
+      <p class="algo-field"><span class="label">   Time:     </span> ${item.time}</p>
+      <p class="algo-field"><span class="label">   Space:    </span> ${item.space}</p>
+      <p class="algo-field"><span class="label">   Best:     </span> ${item.best}</p>
+      <p class="algo-field"><span class="label">   Worst:    </span> ${item.worst}</p>
+    </div>
   `).join("");
 }
 
@@ -157,13 +146,19 @@ function wackyHtml(wackyResults) {
     return "<p>Wacky race results were not available.</p>";
   }
 
-  return wackyResults.races.map((race) => `
-    <article class="race">
-      <h3>${escapeHtml(race.title)}</h3>
-      <p><strong>T[:100]:</strong> <code>${escapeHtml(race.textPrefix100)}</code></p>
-      <p><strong>P:</strong> <code>${escapeHtml(race.pattern)}</code></p>
+  return wackyResults.races.map((race, idx) => `
+    <div class="race-block">
+      <p class="race-title">4.${idx + 1}.  ${escapeHtml(race.title)}</p>
+      <pre class="rfc-pre">   T[:100] : ${escapeHtml(race.textPrefix100)}
+   Pattern : ${escapeHtml(race.pattern)}</pre>
       <table>
-        <thead><tr><th>Algorithm</th><th>Median time</th><th>Matches</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Algorithm</th>
+            <th>Median Time</th>
+            <th>Matches</th>
+          </tr>
+        </thead>
         <tbody>
           ${tableRows(race.measurements, [
             (row) => escapeHtml(row.algorithm),
@@ -172,8 +167,8 @@ function wackyHtml(wackyResults) {
           ])}
         </tbody>
       </table>
-      <p><strong>Ratio:</strong> ${race.ratio.toFixed(2)}x. ${escapeHtml(race.explanation)}</p>
-    </article>
+      <p class="rfc-p">   Ratio: ${race.ratio.toFixed(2)}x.  ${escapeHtml(race.explanation)}</p>
+    </div>
   `).join("");
 }
 
@@ -184,7 +179,16 @@ function wildcardHtml(wildcardResults) {
 
   return `
     <table>
-      <thead><tr><th>Case</th><th>Pattern</th><th>Expected</th><th>Brute Force</th><th>Sunday</th><th>Status</th></tr></thead>
+      <thead>
+        <tr>
+          <th>Case</th>
+          <th>Pattern</th>
+          <th>Expected</th>
+          <th>Brute Force</th>
+          <th>Sunday</th>
+          <th>Status</th>
+        </tr>
+      </thead>
       <tbody>
         ${tableRows(wildcardResults.tests, [
           (row) => escapeHtml(row.name),
@@ -196,9 +200,77 @@ function wildcardHtml(wildcardResults) {
         ])}
       </tbody>
     </table>
-    <p>The large text timing used ${wildcardResults.largeTiming?.textLength ?? "n/a"} characters and pattern <code>${escapeHtml(wildcardResults.largeTiming?.pattern ?? "")}</code>.
-    Brute Force took ${formatMs(wildcardResults.largeTiming?.bruteForceWildcard?.ms)} and Sunday took ${formatMs(wildcardResults.largeTiming?.sundayWildcard?.ms)}.</p>
+    <p class="rfc-p">   Large-text timing used ${wildcardResults.largeTiming?.textLength ?? "n/a"} characters
+   with pattern <code>${escapeHtml(wildcardResults.largeTiming?.pattern ?? "")}</code>.
+   Brute Force: ${formatMs(wildcardResults.largeTiming?.bruteForceWildcard?.ms)}.
+   Sunday: ${formatMs(wildcardResults.largeTiming?.sundayWildcard?.ms)}.</p>
   `;
+}
+
+function tocHtml() {
+  const entries = [
+    ["1.", "Introduction", "3"],
+    ["2.", "Algorithm Descriptions", "3"],
+    ["  2.1.", "Brute Force", "3"],
+    ["  2.2.", "Sunday", "3"],
+    ["  2.3.", "KMP", "4"],
+    ["  2.4.", "FSM", "4"],
+    ["  2.5.", "Rabin-Karp", "4"],
+    ["  2.6.", "Gusfield Z-Algorithm", "4"],
+    ["3.", "Part 1A -- Benchmark Results", "5"],
+    ["4.", "Part 1B -- Wacky Races", "6"],
+    ["5.", "Part 2 -- Wildcard Matching", "7"],
+    ["6.", "Part 3 -- 2D Rabin-Karp", "8"],
+    ["7.", "Conclusions", "8"],
+    ["8.", "References", "9"],
+  ];
+
+  const lines = entries.map(([num, title, pg]) => {
+    const left = `${num.padEnd(8)}${title}`;
+    const dots = ".".repeat(Math.max(4, 65 - left.length));
+    return `<span class="toc-line">${escapeHtml(left)}${dots}${pg}</span>`;
+  });
+
+  return lines.join("\n");
+}
+
+function referencesHtml() {
+  const refs = [
+    {
+      tag: "[CLRS]",
+      text: "Cormen, T. H., Leiserson, C. E., Rivest, R. L., and Stein, C.\n" +
+            "         Introduction to Algorithms, 4th ed.  MIT Press, 2022.\n" +
+            "         (KMP, Rabin-Karp, FSM string matcher -- Chapter 32)"
+    },
+    {
+      tag: "[GUS]",
+      text: "Gusfield, D.\n" +
+            "         Algorithms on Strings, Trees, and Sequences.\n" +
+            "         Cambridge University Press, 1997.\n" +
+            "         (Z-Algorithm -- Chapter 1)"
+    },
+    {
+      tag: "[CL]",
+      text: "Crochemore, M. and Lecroq, T.\n" +
+            "         Handbook of Exact String Matching Algorithms.\n" +
+            "         King's College London Publications, 2004.\n" +
+            "         (Brute Force, Sunday -- Chapters 1 and 8)"
+    },
+    {
+      tag: "[AI]",
+      text: "AI & Web Tools.\n" +
+            "         Development was assisted by AI tools (Claude by Anthropic,\n" +
+            "         ChatGPT by OpenAI, GitHub Copilot by GitHub/Microsoft) and\n" +
+            "         web resources (Google Search, Google Scholar).\n" +
+            "         All implementations and analysis are the author's own."
+    }
+  ];
+
+  return refs.map((ref) => `
+    <div class="ref-block">
+      <p class="rfc-p"><span class="label">${escapeHtml(ref.tag)}</span>  ${escapeHtml(ref.text)}</p>
+    </div>
+  `).join("");
 }
 
 function buildHtml({ benchmarkResults, wackyResults, wildcardResults, chartUris }) {
@@ -208,80 +280,626 @@ function buildHtml({ benchmarkResults, wackyResults, wildcardResults, chartUris 
     day: "numeric"
   });
 
+  const year = new Date().getFullYear();
+
   return `<!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Assignment I — Pattern Matching Algorithms</title>
+  <title>Pattern Matching Algorithms</title>
   <style>
-    body { font-family: Arial, sans-serif; color: #202124; line-height: 1.45; margin: 0; }
-    .page { padding: 44px 54px; page-break-after: always; }
-    .page:last-child { page-break-after: auto; }
-    h1 { font-size: 34px; margin: 0 0 18px; }
-    h2 { font-size: 23px; border-bottom: 2px solid #222; padding-bottom: 6px; margin: 0 0 18px; }
-    h3 { font-size: 17px; margin: 20px 0 6px; }
-    p, li { font-size: 11.5px; }
-    code { font-family: Consolas, monospace; font-size: 10px; }
-    table { width: 100%; border-collapse: collapse; margin: 10px 0 18px; font-size: 10px; }
-    th, td { border: 1px solid #d6d6d6; padding: 6px; vertical-align: top; }
-    th { background: #f3f5f7; }
-    img.chart { width: 100%; margin: 12px 0 20px; border: 1px solid #eeeeee; }
-    .cover { display: flex; flex-direction: column; justify-content: center; height: 90vh; }
-    .subtitle { font-size: 16px; color: #555; }
-    .algorithm { break-inside: avoid; }
-    .race { break-inside: avoid; margin-bottom: 18px; }
+    /* ── RFC base typography ─────────────────────────────── */
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Courier Prime", "Courier New", Courier, monospace;
+      font-size: 10.8pt;
+      color: #000;
+      background: #fff;
+      line-height: 1.5;
+    }
+
+    /* ── Page shell ──────────────────────────────────────── */
+    .page {
+      width: 680px;
+      margin: 0 auto;
+      padding: 22px 0 10px;
+      position: relative;
+      height: auto;
+      min-height: auto;
+      overflow: visible;
+      break-after: auto;
+      page-break-after: auto;
+    }
+
+    .page:first-of-type {
+      padding-top: 48px;
+    }
+
+    .page:last-child {
+      break-after: auto;
+      page-break-after: auto;
+    }
+
+
+    /* ── RFC page header ─────────────────────────────────── */
+    .rfc-header {
+      display: none;
+      justify-content: space-between;
+      border-bottom: 1px solid #000;
+      padding-bottom: 6px;
+      margin-bottom: 24px;
+      font-size: 9.5pt;
+    }
+    .rfc-header span { white-space: nowrap; }
+
+    /* ── RFC page footer ─────────────────────────────────── */
+    .rfc-footer {
+      display: none;
+      justify-content: space-between;
+      border-top: 1px solid #000;
+      padding-top: 6px;
+      margin-top: 36px;
+      font-size: 9pt;
+    }
+    .rfc-footer span { white-space: nowrap; }
+
+    /* ── Cover / first page ──────────────────────────────── */
+    .cover-meta {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .cover-meta p { font-size: 10pt; line-height: 1.8; }
+
+    .cover-title {
+      text-align: center;
+      margin: 36px 0 24px;
+    }
+    .cover-title h1 {
+      font-size: 13pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .rfc-rule {
+      border: none;
+      border-top: 1px solid #000;
+      margin: 18px 0;
+    }
+
+    /* ── Abstract box ────────────────────────────────────── */
+    .abstract {
+      margin: 24px 0;
+    }
+    .abstract-label {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 10pt;
+      margin-bottom: 6px;
+    }
+    .abstract p {
+      margin-left: 3em;
+      font-size: 10pt;
+      line-height: 1.55;
+    }
+
+    /* ── Status of memo ──────────────────────────────────── */
+    .status-memo {
+      font-size: 9.5pt;
+      line-height: 1.6;
+      border: 1px solid #aaa;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+    }
+    .status-memo p { margin-bottom: 4px; }
+
+    /* ── TOC ─────────────────────────────────────────────── */
+    .toc { margin: 8px 0 0 0; }
+    .toc-line {
+      display: block;
+      white-space: pre;
+      font-size: 10pt;
+      line-height: 1.7;
+    }
+
+    /* ── Section headings ────────────────────────────────── */
+    h2.rfc-h2 {
+      font-size: 11pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 28px 0 10px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Body text ───────────────────────────────────────── */
+    .rfc-p {
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 10.5pt;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    /* ── Algorithm blocks ────────────────────────────────── */
+    .algo-block {
+      margin-bottom: 20px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .algo-name {
+      font-weight: bold;
+      font-size: 10.5pt;
+      margin-bottom: 2px;
+    }
+    .algo-cat {
+      font-size: 10pt;
+      font-style: italic;
+      margin-bottom: 4px;
+    }
+    .algo-field {
+      font-size: 10pt;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      margin-bottom: 2px;
+    }
+    .label { font-weight: bold; }
+
+    /* ── Race blocks ─────────────────────────────────────── */
+    .race-block {
+      margin-bottom: 24px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .race-title {
+      font-weight: bold;
+      font-size: 10.5pt;
+      margin-bottom: 6px;
+    }
+
+    /* ── Pre / code ──────────────────────────────────────── */
+    .rfc-pre {
+      white-space: pre-wrap;
+      word-break: break-all;
+      font-size: 9.5pt;
+      margin: 6px 0 10px;
+      line-height: 1.5;
+    }
+    code {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    /* ── Tables ──────────────────────────────────────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px;
+      font-size: 9.8pt;
+    }
+    th, td {
+      border: 1px solid #555;
+      padding: 5px 8px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      font-weight: bold;
+      background: #f0f0f0;
+    }
+
+    /* ── Charts ──────────────────────────────────────────── */
+    img.chart {
+      display: block;
+      width: 100%;
+      margin: 12px 0 20px;
+      border: 1px solid #888;
+    }
+
+    /* ── References ──────────────────────────────────────── */
+    .ref-block {
+      margin-bottom: 16px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* ── Print tweaks ────────────────────────────────────── */
+    @media print {
+      body {
+        font-size: 10pt;
+      }
+
+      .page {
+        width: 680px;
+        margin: 0 auto;
+        height: auto;
+        min-height: auto;
+        overflow: visible;
+        break-after: auto;
+        page-break-after: auto;
+        padding: 22px 0 10px;
+      }
+
+      .page:first-of-type {
+        padding-top: 48px;
+      }
+
+      .page:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      img,
+      table,
+      .algo-block,
+      .race-block,
+      .ref-block {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
   </style>
 </head>
 <body>
-  <section class="page cover">
-    <h1>Assignment I — Pattern Matching Algorithms</h1>
-    <p class="subtitle">Student name: [YOUR NAME]</p>
-    <p class="subtitle">Date: ${today}</p>
-  </section>
 
-  <section class="page">
-    <h2>1. Introduction</h2>
-    <p>Pattern matching asks where a pattern P of length m appears inside a text T of length n. It matters in text editors, search engines, plagiarism tools, compilers, antivirus scanners, and DNA sequence analysis because all of these systems need to find structured sequences inside larger data.</p>
-    <p>This project implements Brute Force, Sunday, Knuth-Morris-Pratt, a finite-state-machine matcher, Rabin-Karp, Gusfield's Z-algorithm, wildcard extensions for Brute Force and Sunday, and a 2D Rabin-Karp matcher.</p>
-  </section>
+<!-- ════════════════════════════════════════════════════════
+     PAGE 1 — COVER / FRONT MATTER
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="rfc-header">
+    <span>University Assignment</span>
+    <span>Pattern Matching</span>
+    <span>${year}</span>
+  </div>
 
-  <section class="page">
-    <h2>2. Algorithm Descriptions</h2>
-    ${algorithmDescriptionsHtml()}
-  </section>
+  <div class="cover-meta">
+    <p>Author:   Ulugbek Norbutaev</p>
+    <p>Id:       405293</p>
+    <p>Date:     ${today}</p>
+    <p>Category: Informational</p>
+  </div>
 
-  <section class="page">
-    <h2>3. Part 1A Benchmark Results</h2>
-    ${chartUris.small ? `<img class="chart" src="${chartUris.small}" alt="Small pattern chart">` : ""}
-    ${chartUris.large ? `<img class="chart" src="${chartUris.large}" alt="Large pattern chart">` : ""}
-    <p>${escapeHtml(benchmarkAnalysis(benchmarkResults))}</p>
-  </section>
+  <hr class="rfc-rule">
 
-  <section class="page">
-    <h2>4. Part 1B — Wacky Races</h2>
-    ${chartUris.wacky ? `<img class="chart" src="${chartUris.wacky}" alt="Wacky races chart">` : ""}
-    ${wackyHtml(wackyResults)}
-  </section>
+  <div class="cover-title">
+    <h1>Assignment I<br>Pattern Matching Algorithms</h1>
+  </div>
 
-  <section class="page">
-    <h2>5. Part 2 — Wildcard Matching</h2>
-    <p>The Brute Force wildcard matcher tokenizes the pattern into literals, question marks, and stars, then uses backtracking over a glob-style matcher. The question mark consumes exactly one character. The star records a backtracking point and can later expand to consume zero or more characters.</p>
-    <p>The Sunday wildcard matcher splits the token stream on stars. Each fixed segment is searched left to right with a Sunday-style shift table, and question marks are treated conservatively because they can match any character. The segments must appear in increasing, non-overlapping order, while stars allow arbitrary text between them.</p>
-    ${wildcardHtml(wildcardResults)}
-  </section>
+  <hr class="rfc-rule">
 
-  <section class="page">
-    <h2>6. Part 3 — 2D Rabin-Karp</h2>
-    <p>The 2D version checks whether the K by K top-right corner appears elsewhere in the picture. Arbitrary picture items are first mapped to integer codes with a Map. Each row window is hashed with a 1D rolling hash, and then each vertical stack of K row hashes is hashed again to form one 2D hash.</p>
-    <p>The implementation uses <code>&amp; ((1 &lt;&lt; 31) - 1)</code> instead of modulo division. Bitwise masking is fast in JavaScript because it operates on 32-bit integers, and it avoids the division-like cost of <code>% prime</code>. A hash hit is always verified by direct K by K comparison.</p>
-    <p>The algorithm is O(M*N): horizontal row hashes are computed once for every row and column window, vertical hashes are rolled in O(1), and every pixel participates in a constant number of rolling-hash updates. Verification is only done on hash matches.</p>
-    <p>Worked example with K=2: in a 5 by 5 picture, the pattern is rows 0..1 and columns 3..4. If those four values are <code>[[D,E],[I,J]]</code>, the algorithm hashes <code>D,E</code> and <code>I,J</code>, combines those two row hashes, then slides a 2 by 2 window through all positions except the original top-right location.</p>
-  </section>
+  <div class="status-memo">
+    <p><strong>Status of This Document</strong></p>
+    <p>This document is an informational submission prepared for university
+    coursework.  It describes the design, implementation, and empirical
+    evaluation of six exact pattern matching algorithms, two wildcard
+    matchers, and a two-dimensional Rabin-Karp matcher.</p>
+    <p>This document does not specify an Internet Standard.</p>
+  </div>
 
-  <section class="page">
-    <h2>7. Conclusions</h2>
-    <p>Brute Force is best as a simple baseline. Sunday is excellent on ordinary text when the after-window character creates large jumps, but it can degrade on repetitive inputs. KMP and FSM give deterministic linear scans; KMP is usually more space-efficient, while FSM is attractive when the transition table can be reused. Rabin-Karp is practical when hashes avoid frequent verification and especially useful as a basis for multi-pattern or multidimensional matching. Gusfield's Z-algorithm is a clean linear-time exact matcher that is also valuable for prefix-analysis problems.</p>
-  </section>
+  <div class="abstract">
+    <p class="abstract-label">Abstract</p>
+    <p>
+   Pattern matching locates all occurrences of a pattern P of length m
+   inside a text T of length n.  This document describes and evaluates
+   six algorithms: Brute Force, Sunday, Knuth-Morris-Pratt (KMP), a
+   Finite State Machine (FSM) matcher, Rabin-Karp, and Gusfield's
+   Z-Algorithm.  Wildcard extensions supporting "?" and "*" tokens are
+   implemented for Brute Force and Sunday.  A two-dimensional Rabin-Karp
+   matcher is provided for Part 3.  Empirical benchmarks on Moby Dick
+   (Project Gutenberg) with text sizes from 10,000 to 1,000,000
+   characters confirm theoretical complexity predictions and demonstrate
+   that no single algorithm dominates all input shapes.
+    </p>
+  </div>
+
+  <hr class="rfc-rule">
+
+  <h2 class="rfc-h2">Table of Contents</h2>
+  <div class="toc">
+    ${tocHtml()}
+  </div>
+
+  <div class="rfc-footer">
+    <span>Norbutaev</span>
+    <span>${today}</span>
+    <span>[Page 1]</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 2 — INTRODUCTION + ALGORITHM DESCRIPTIONS
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="rfc-header">
+    <span>Pattern Matching Algorithms</span>
+    <span>Informational</span>
+    <span>${year}</span>
+  </div>
+
+  <h2 class="rfc-h2">1.  Introduction</h2>
+  <p class="rfc-p">
+   Pattern matching asks where a pattern P of length m appears inside a
+   text T of length n.  It is a fundamental operation in text editors,
+   search engines, plagiarism detectors, compilers, antivirus scanners,
+   and DNA sequence analysis tools.
+
+   This project implements six exact matchers, two wildcard matchers,
+   and one two-dimensional hash-based matcher.  All implementations are
+   in JavaScript (Node.js).  Benchmarks run against the full text of
+   Herman Melville's "Moby Dick" obtained from Project Gutenberg
+   (https://www.gutenberg.org/files/2701/2701-0.txt) and cached locally
+   to ensure reproducibility.
+
+   All exact one-dimensional matchers share the signature:
+
+      algorithm(text, pattern) -&gt; Array of zero-based match indices
+
+   Wildcard matchers return a Boolean.  The 2D matcher returns an object
+   { found, position }.
+
+   Development was assisted by AI tools (Claude by Anthropic, ChatGPT
+   by OpenAI, GitHub Copilot by GitHub/Microsoft) and web resources
+   (Google Search, Google Scholar) [AI].  All implementations and
+   analysis are the author's own.
+  </p>
+
+  <h2 class="rfc-h2">2.  Algorithm Descriptions</h2>
+  ${algorithmDescriptionsHtml()}
+
+  <div class="rfc-footer">
+    <span>Norbutaev</span>
+    <span>${today}</span>
+    <span>[Page 2]</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 3 — PART 1A BENCHMARK RESULTS
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="rfc-header">
+    <span>Pattern Matching Algorithms</span>
+    <span>Informational</span>
+    <span>${year}</span>
+  </div>
+
+  <h2 class="rfc-h2">3.  Part 1A -- Benchmark Results (RT vs Text Length)</h2>
+  <p class="rfc-p">
+   Text slices of approximately 10,000 / 50,000 / 100,000 / 200,000 /
+   500,000 / 1,000,000 characters are taken from the beginning of the
+   cached Moby Dick text.  Two patterns are tested:
+
+      Small pattern : "the White Whale"  (15 characters, first exact
+                       occurrence in the book)
+      Large pattern : 300-character substring starting at position 20,000
+
+   Each (algorithm, size, pattern) triple is measured three times after
+   one warm-up call.  The median of the three measured runs is recorded
+   to reduce sensitivity to garbage-collection pauses and OS scheduling.
+  </p>
+
+  ${chartUris.small ? `<img class="chart" src="${chartUris.small}" alt="Running time vs text length — small pattern">` : "<p class=\"rfc-p\">   [Chart not available: rt_small_pattern.png]</p>"}
+
+  <p class="rfc-p">
+   Figure 1.  Running time vs text length for the small pattern.
+  </p>
+
+  ${chartUris.large ? `<img class="chart" src="${chartUris.large}" alt="Running time vs text length — large pattern">` : "<p class=\"rfc-p\">   [Chart not available: rt_large_pattern.png]</p>"}
+
+  <p class="rfc-p">
+   Figure 2.  Running time vs text length for the large pattern.
+  </p>
+
+  <p class="rfc-p">   ${escapeHtml(benchmarkAnalysis(benchmarkResults))}</p>
+
+  <div class="rfc-footer">
+    <span>Norbutaev</span>
+    <span>${today}</span>
+    <span>[Page 3]</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 4 — PART 1B WACKY RACES
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="rfc-header">
+    <span>Pattern Matching Algorithms</span>
+    <span>Informational</span>
+    <span>${year}</span>
+  </div>
+
+  <h2 class="rfc-h2">4.  Part 1B -- Wacky Races</h2>
+  <p class="rfc-p">
+   Adversarial inputs are constructed to show that no single algorithm
+   wins on all input shapes.  Each race text is at least 100 KB.  Each
+   algorithm is warmed up once, then timed for five runs; the median is
+   recorded.  A ratio >= 2.0x is required.
+  </p>
+
+  ${chartUris.wacky ? `<img class="chart" src="${chartUris.wacky}" alt="Wacky races bar chart">` : "<p class=\"rfc-p\">   [Chart not available: wacky_races.png]</p>"}
+
+  <p class="rfc-p">   Figure 3.  Median execution times for each race.</p>
+
+  ${wackyHtml(wackyResults)}
+
+  <div class="rfc-footer">
+    <span>Norbutaev</span>
+    <span>${today}</span>
+    <span>[Page 4]</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 5 — PART 2 WILDCARD MATCHING
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="rfc-header">
+    <span>Pattern Matching Algorithms</span>
+    <span>Informational</span>
+    <span>${year}</span>
+  </div>
+
+  <h2 class="rfc-h2">5.  Part 2 -- Wildcard Matching</h2>
+  <p class="rfc-p">
+   Wildcard patterns support three token types:
+
+      ?   Matches exactly one arbitrary character.
+      *   Matches zero or more arbitrary characters.
+      \\? \\* \\\\   Escaped tokens are treated as literals.
+
+5.1.  Brute Force Wildcard
+
+   The pattern is tokenized into literals, "any_one" tokens (?), and
+   "any_many" tokens (*).  A recursive backtracking matcher tries each
+   possible expansion of * lazily (zero characters first, then one
+   more on backtrack).  The search function wraps the core matcher so
+   that the pattern is allowed to match any substring of the text,
+   behaving as though implicit * tokens surround the pattern.
+
+5.2.  Sunday Wildcard
+
+   The token stream is split on * tokens, producing fixed segments.
+   Each segment is searched left to right with a Sunday-style bad-
+   character shift table.  Question marks are handled conservatively:
+   any text character is a valid match at a ? position, so the shift
+   table must not skip over positions that could satisfy ?.  Segments
+   must appear in non-overlapping, strictly increasing order; *
+   tokens permit arbitrary text gaps between segments.
+
+5.3.  Correctness Test Results
+  </p>
+
+  ${wildcardHtml(wildcardResults)}
+
+  <div class="rfc-footer">
+    <span>Norbutaev</span>
+    <span>${today}</span>
+    <span>[Page 5]</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 6 — PART 3 + CONCLUSIONS
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="rfc-header">
+    <span>Pattern Matching Algorithms</span>
+    <span>Informational</span>
+    <span>${year}</span>
+  </div>
+
+  <h2 class="rfc-h2">6.  Part 3 -- 2D Rabin-Karp</h2>
+  <p class="rfc-p">
+   Given an M x N picture of arbitrary items and an integer K, the
+   function checks whether the top-right K x K block appears anywhere
+   else in the picture.
+
+   Signature:
+      rabinKarp2D(picture, K)
+      -&gt; { found: boolean, position: { row, col } | null }
+
+6.1.  Item Encoding
+
+   Picture items may be of any type.  Before hashing, each unique item
+   is mapped to a positive integer code using a Map.  Hashing then
+   operates on integer codes.
+
+6.2.  Two-Pass Hashing
+
+   Pass 1 (horizontal): For every row, compute rolling hashes of all
+   length-K windows.  Store one hash per (row, col) pair.
+
+   Pass 2 (vertical): For every column-window position col, maintain
+   a rolling vertical hash over the K row hashes above.  Roll the
+   hash down each row in O(1) by subtracting the departing row hash
+   and adding the arriving row hash.
+
+6.3.  Verification
+
+   Hash matches are verified by direct K x K cell comparison.
+   Correctness does not depend on hash uniqueness; it depends only on
+   the verification step.
+
+6.4.  Hash Arithmetic
+
+   The bitwise mask  &amp; ((1 &lt;&lt; 31) - 1)  is used in place of modulo
+   division for speed.  The mask value 2^31 - 1 is a Mersenne prime
+   but the operation is a simple bit truncation, not true modular
+   arithmetic.  Collisions are possible but rare; each is resolved by
+   direct comparison, so the result is always correct.
+
+6.5.  Complexity
+
+      Horizontal pass : O(M * N)
+      Vertical pass   : O(M * N)
+      Verification    : O(K^2) per hash hit, expected O(1) hits
+      Total expected  : O(M * N)
+      Space           : O(M * (N - K + 1)) for the row hash table
+  </p>
+
+  <h2 class="rfc-h2">7.  Conclusions</h2>
+  <p class="rfc-p">
+   Brute Force is the correct baseline: zero preprocessing, simple
+   reasoning, and often acceptable performance on random text.
+
+   Sunday performs well in practice when its shift table produces
+   large jumps, but degrades to O(n*m) on repetitive inputs.
+
+   KMP and FSM both guarantee O(n+m) worst-case search time.  KMP is
+   usually preferred for space efficiency; FSM is attractive when the
+   same pattern is searched many times and the transition table can
+   be constructed once and reused.
+
+   Rabin-Karp excels when searching for multiple patterns (compare
+   all hashes in one pass) and extends naturally to two-dimensional
+   matching.  Its weakness is degenerate inputs with many true
+   matches or collisions.
+
+   Gusfield's Z-Algorithm is a clean, self-contained linear-time
+   exact matcher.  Its Z-array also solves broader prefix-analysis
+   problems, making it more general than a dedicated search routine.
+
+   No single algorithm is best for all inputs.  The wacky-race
+   experiments confirm this: each of Sunday, KMP, and Rabin-Karp can
+   be made to win or lose by at least 2x depending on the structure
+   of the text and pattern.
+  </p>
+
+  <div class="rfc-footer">
+    <span>Norbutaev</span>
+    <span>${today}</span>
+    <span>[Page 6]</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 7 — REFERENCES
+     ════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="rfc-header">
+    <span>Pattern Matching Algorithms</span>
+    <span>Informational</span>
+    <span>${year}</span>
+  </div>
+
+  <h2 class="rfc-h2">8.  References</h2>
+  <p class="rfc-p">
+   The following sources were consulted during the design, implementation,
+   and analysis of this project.
+  </p>
+
+  ${referencesHtml()}
+
+  <div class="rfc-footer">
+    <span>Norbutaev</span>
+    <span>${today}</span>
+    <span>[Page 7]</span>
+  </div>
+</div>
+
 </body>
 </html>`;
 }
@@ -319,17 +937,24 @@ async function generatePdfReport(inputs = {}) {
 
   try {
     const page = await browser.newPage();
+    await page.setViewport({ width: 760, height: 1000, deviceScaleFactor: 1 });
     await page.setContent(html, { waitUntil: "networkidle0" });
+    await page.emulateMediaType("print");
+    const pdfSize = await page.evaluate(() => {
+      const html = document.documentElement;
+      const body = document.body;
+      return {
+        width: Math.ceil(Math.max(html.scrollWidth, body.scrollWidth)),
+        height: Math.ceil(Math.max(html.scrollHeight, body.scrollHeight))
+      };
+    });
+
     await page.pdf({
       path: REPORT_PATH,
-      format: "A4",
+      width: `${pdfSize.width}px`,
+      height: `${pdfSize.height + 50}px`,
       printBackground: true,
-      margin: {
-        top: "12mm",
-        right: "10mm",
-        bottom: "12mm",
-        left: "10mm"
-      }
+      margin: { top: "0", right: "0", bottom: "0", left: "0" }
     });
   } finally {
     await browser.close();

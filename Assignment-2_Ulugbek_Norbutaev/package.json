@@ -10,5 +10,8 @@
     "graphs": "node src/benchmark/graphTasks.js",
     "report": "node src/report/reportGenerator.js"
   },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  },
   "license": "UNLICENSED"
 }
